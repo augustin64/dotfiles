@@ -1,0 +1,3 @@
+nm-applet &
+termite &
+feh --bg-fill $WALLPAPER
