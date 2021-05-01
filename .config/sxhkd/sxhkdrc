@@ -134,3 +134,7 @@ XF86Audio{Raise,Lower}Volume
 
 XF86AudioMute
     pulseaudio-ctl mute
+
+# Change brightness
+XF86MonBrightness{Up,Down}
+    brightnessctl s 215{+,-}
