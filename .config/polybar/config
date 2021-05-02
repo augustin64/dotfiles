@@ -43,7 +43,7 @@ active-light = #313435
 monitor=eDP1
 tray-position = right
 width =  100%
-height = 26
+height = 22
 padding-left =1
 padding-right =0
 background = ${colors.background}
@@ -59,12 +59,12 @@ wm-restack = bspwm
 
 modules-left = round-left bspwm round-right 
 modules-center =    
-modules-right =      temperature   alsa battery round-left cpu round-right wlan mem xbacklight round-left time round-right  powermenu
+modules-right = temperature alsa battery round-left cpu round-right mem xbacklight round-left time round-right  powermenu
 
-font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=13;3
-font-1 = JetBrainsMono Nerd Font:size=18;5
-font-2 = Material Design Icons:style=Bold:size=13;3
-font-3 = unifont:fontformat=truetype:size=12:antialias=true;
+font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
+font-1 = JetBrainsMono Nerd Font:size=15;5
+font-2 = Material Design Icons:style=Bold:size=11;5
+font-3 = unifont:fontformat=truetype:size=11:antialias=true;
 
 [bar/top_external]
 bottom = false
@@ -75,7 +75,7 @@ modules-right = alsa round-left time round-right powermenu
 
 tray-position = right
 width =  100%
-height = 26
+height = 24
 padding-left =1
 padding-right =0
 background = ${colors.background}
@@ -216,7 +216,7 @@ label = %date%%time%
 type = custom/script
 exec = free -m | sed -n 's/^Mem:\s\+[0-9]\+\s\+\([0-9]\+\)\s.\+/\1/p'
 format = <label>
-format-prefix = "﬙ " 
+format-prefix = " ﬙ " 
 label = %output% MB
 label-padding = 1
 format-prefix-foreground = #d19a66
@@ -228,28 +228,21 @@ content-padding =2
 click-left = betterlockscreen -l dim -u $WALLPAPER &
 content-foreground =  #e06c75
 
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
-format-connected =  <label-connected>
-label-connected = "󰤪  " 
-label-connected-foreground = #A3BE8C 
-
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC0
 full-at = 98
+time-format= %H:%M
 
 format-charging = <animation-charging> <label-charging>
-label-charging = %percentage%% 
+label-charging = %percentage%%
 
 format-charging-padding = 1
 format-charging-foreground = ${colors.color4}
 
 format-discharging = <ramp-capacity> <label-discharging>
-label-discharging = %percentage%%
+label-discharging = %percentage%% (%time%)
 
 format-discharging-foreground = ${colors.foreground}
 
