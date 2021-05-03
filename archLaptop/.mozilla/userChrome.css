@@ -1,0 +1,39 @@
+/* Hide browser-tab */
+#titlebar {
+    height: 10px !important;
+    background-color: #2b2a33 !important;
+    transition: 0.4s !important;
+    transition-delay:2s !important;
+}
+#titlebar:hover {
+    display: -moz-box !important;
+    height: 45px !important;
+    background-color: #1A1A1B !important;
+    transition-delay:0s !important;
+}
+.tabbrowser-tab {
+    opacity: 0 !important;
+    transition: 0.4s !important;
+    transition-delay:2s !important;
+}
+
+#titlebar:hover .tabbrowser-tab {
+    opacity: 1 !important;
+    transition-delay:0s !important;
+}
+
+/* remove bottom navbar blackline */
+#navigator-toolbox{ 
+    border-bottom: none !important; 
+}
+/* remove top navbar blackline */
+#nav-bar {
+    border-top-width: 0 !important;
+}
+
+/* remove url bar 3 dots */ 
+#urlbar:not([focused="true"], :focus-within)
+    #urlbar-input-container:not(:hover)
+    #pageActionButton {
+    visibility: collapse !important;
+}
