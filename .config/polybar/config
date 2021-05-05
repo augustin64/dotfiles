@@ -42,24 +42,32 @@ active-light = #313435
 [bar/top]
 monitor=eDP1
 tray-position = right
-width =  100%
-height = 22
-padding-left =1
-padding-right =0
+tray-offset-x = -66%
+tray-detached = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 bottom = false
-border-top-size = 7
-border-bottom-size = 7
+border-top-size = 0
+border-bottom-size = 0
 border-top-color = ${colors.background}
 border-bottom-color = ${colors.background}
+
+padding-left = 2
+padding-right = 1
+radius = 5.0
+height = 27px
+width = 99.5%
+offset-y = 0.25%
+offset-x = 0.25%
+override-redirect = true
 
 line-size = 3
 wm-restack = bspwm
 
-modules-left = round-left bspwm round-right 
-modules-center =    
-modules-right = temperature alsa battery round-left cpu round-right mem xbacklight round-left time round-right  powermenu
+modules-left = bspwm 
+modules-center = battery time
+modules-right = alsa temperature cpu mem powermenu
+#temperature cpu mem battery powermenu
 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
 font-1 = JetBrainsMono Nerd Font:size=15;5
@@ -70,19 +78,26 @@ font-3 = unifont:fontformat=truetype:size=11:antialias=true;
 bottom = false
 monitor = HDMI1
 
-modules-left = round-left bspwm round-right
-modules-right = alsa round-left time round-right powermenu
-
+modules-left = bspwm
+modules-right = alsa powermenu
+modules-center = time
 tray-position = right
-width =  100%
-height = 24
-padding-left =1
-padding-right =0
+tray-padding = 3
+tray-detached = true
+tray-offset-x = -10%
+height = 27px
+padding-left = 2
+padding-right = 0
+radius = 5.0
+width = 99.5%
+offset-y = 0.25%
+offset-x = 0.25%
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-border-top-size = 7
-border-bottom-size = 7
+border-top-size = 0
+border-bottom-size = 0
 border-top-color = ${colors.background}
 border-bottom-color = ${colors.background}
 
@@ -93,16 +108,6 @@ font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=13;3
 font-1 = JetBrainsMono Nerd Font:size=18;5
 font-2 = Material Design Icons:style=Bold:size=13;3
 font-3 = unifont:fontformat=truetype:size=12:antialias=true;
-
-[module/round-left]
-type = custom/text
-content = %{T3}%{T-}
-content-foreground = #2b2f37
-
-[module/round-right]
-type = custom/text
-content = %{T3}%{T-}
-content-foreground = #2b2f37
 
 [module/temperature]
 type = internal/temperature
@@ -116,7 +121,7 @@ label = %temperature-c%
 label-warn = %temperature-c%
 ramp-0 =  "󰜗" 
 ramp-foreground = #a4ebf3
-label-padding-right = 1
+label-padding = 1
 
 [module/bspwm]
 type = internal/bspwm
@@ -141,28 +146,24 @@ ws-icon-7 = 8;%{F#ffff7c}
 ws-icon-8 = 9;%{F#f4a169}  
 ws-icon-9 = 0;%{F#ff6b63}    
 
-
-
-
 label-separator = ""
-label-separator-background = #2b2f37
+label-separator-background = ${colors.background}
 
 label-focused =  %icon%  
 label-focused-foreground = ${colors.foreground}
-label-focused-underline =  #565c64
+label-focused-underline =  #7b7f87
 label-focused-padding = 1
-label-focused-background = #2b2f37
+label-focused-background = ${colors.background}
 
 label-occupied =  %icon%  
 label-occupied-foreground = #646870  
-label-occupied-background = #2b2f37
+label-occupied-background = ${colors.background}
 label-occupied-padding = 1
 
-label-empty = %icon%
+label-empty = %icon%  
 label-empty-foreground =   ${colors.foreground}
 label-empty-padding = 1
-label-empty-background = #2b2f37
-
+label-empty-background = ${colors.background}
 
 label-urgent = %icon%
 label-urgent-foreground = #88C0D0
@@ -171,8 +172,8 @@ label-urgent-padding = 1
 
 [module/alsa]
 type = internal/alsa
-format-volume = <label-volume> <bar-volume>
-label-volume = " "  
+format-volume = <bar-volume> <label-volume>
+label-volume = " "  
 label-volume-foreground = ${colors.foreground}
 
 format-muted-foreground = ${colors.foreground}
@@ -205,12 +206,12 @@ format-volume-padding = 1
 type = internal/date
 interval = 60
 format = <label>
-format-background = #2b2f37
-date = %{F#888e96}󰥔 %H:%M%{F-}
+format-background = ${colors.background}
+date = %{F${colors.foreground}󰥔 %H:%M%{F-}
 time-alt = %{F#61afef}󰃭 %a, %b %d%{F-}
 
 label = %date%%time%
-
+format-padding = 0
 
 [module/mem]
 type = custom/script
@@ -224,7 +225,7 @@ format-prefix-foreground = #d19a66
 [module/powermenu]
 type = custom/text 
 content =" " 
-content-padding =2
+content-padding = 1
 click-left = betterlockscreen -l dim -u $WALLPAPER &
 content-foreground =  #e06c75
 
@@ -235,13 +236,13 @@ adapter = AC0
 full-at = 98
 time-format= %H:%M
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <label-charging> <animation-charging>
 label-charging = %percentage%%
 
 format-charging-padding = 1
 format-charging-foreground = ${colors.color4}
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging> <ramp-capacity>
 label-discharging = %percentage%% (%time%)
 
 format-discharging-foreground = ${colors.foreground}
@@ -252,10 +253,11 @@ format-full-prefix-foreground = #A0E8A2
 format-foreground = ${colors.color4}
 format-background = #2b2f37 
 
-label-discharging-foreground = ${colors.foreground}
+label-discharging-foreground = #888e96
+#${colors.foreground}
 
 ramp-capacity-foreground =  #A0E8A2  
-label-charging-foreground = ${colors.foreground}
+label-charging-foreground = #888e96
 
 ramp-capacity-0 = "  " 
 ramp-capacity-1 = "  " 
@@ -273,6 +275,7 @@ animation-charging-foreground = #DF8890
 animation-charging-framerate = 910 
 format-discharging-padding = 1
 
+format-padding = 0
 
 [module/volume]
 type = custom/script
@@ -301,13 +304,12 @@ format = <label>
 
 label = CPU %percentage%%
 
-format-background = #2b2f37
+format-background = ${colors.background}
 format-foreground = #989cff
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...
 
-
-
-
+[settings]
+format-padding = 1
