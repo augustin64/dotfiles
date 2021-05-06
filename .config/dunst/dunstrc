@@ -29,9 +29,9 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-5+45"
-    #300x5-30+20
-
+    geometry = "250x10-4+34"
+    #"300x5-5+45"
+    
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
 
@@ -62,7 +62,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
     frame_color = "#313435"
@@ -73,7 +73,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    separator_color = auto
 
     # Sort messages by urgency.
     sort = yes
@@ -223,7 +223,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 5
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -285,26 +285,30 @@
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1". Make sure this key actually exists on your keyboard layout,
     # e.g. check output of 'xmodmap -pke'
-    history = ctrl+grave
 
     # Context menu.
     context = ctrl+shift+period
 
 [play_sound]
+    appname = "*"
     summary = "*"
+    body = "*"
+    icon = "*"
+    category = "*"
+    msg_urgency = NORMAL
     script = /home/augustin64/bin/play_notification.sh
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#272A2B"
+    background = "#1e222a"
     foreground = "#adb1b9"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#272A2B"
+    background = "#1e222a"
     foreground = "#ffffff"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
