@@ -84,7 +84,7 @@ modules-center = time
 tray-position = right
 tray-padding = 3
 tray-detached = true
-tray-offset-x = -10%
+tray-offset-x = -84%
 height = 27px
 padding-left = 2
 padding-right = 0
@@ -223,11 +223,24 @@ label-padding = 1
 format-prefix-foreground = #d19a66
 
 [module/powermenu]
-type = custom/text 
-content =" " 
-content-padding = 1
-click-left = betterlockscreen -l dim -u $WALLPAPER &
-content-foreground =  #e06c75
+type = custom/menu
+
+expand-right = false
+format-spacing = 1
+
+label-open = 
+label-close =  Cancel
+label-separator = |
+
+menu-0-0 = Shutdown
+menu-0-0-exec = shutdown now 
+menu-0-1 = Reboot
+menu-0-1-exec = reboot
+
+label-close-foreground = #b9fda6
+menu-0-0-foreground = #75c1ff
+menu-0-1-foreground = #75c1ff
+label-open-foreground =  #e06c75
 
 [module/battery]
 type = internal/battery
