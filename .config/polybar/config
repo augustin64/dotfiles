@@ -53,7 +53,7 @@ border-top-color = ${colors.background}
 border-bottom-color = ${colors.background}
 
 padding-left = 2
-padding-right = 1
+padding-right = 2
 radius = 5.0
 height = 27px
 width = 99.5%
