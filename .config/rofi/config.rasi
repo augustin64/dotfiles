@@ -1,12 +1,12 @@
 configuration{
     modi: "drun";
-    width: 40;
-    columns: 1;
+    width: 27;
+    columns: 2;
     lines: 5;
- 	font: "Iosevka 12";
+ 	font: "Inconsolata 8";
     show-icons: true;
 	icon-theme: "Tela-blue";
-    terminal: "st";
+    terminal: "termite";
     drun-display-format: "{icon} {name}";
     display-drun: "Run";
     location: 0;
@@ -17,26 +17,26 @@ configuration{
 }
 
 * {
-    background-color:#1e222a 
-      ;
-    border-color: #D8DEE9  ;
-    text-color: #D8DEE9;
+    background-color:#1e222a;
+    border-color: #d8dee9;
+    text-color: #d8dee9;
     separator-color: @border-color;
     font: "Iosevka 12";
     show-icons: true;
+    border-radius: 1px;
 }
 
 window {
-    padding: 20px;
-    height: 310px;
+    padding: 5px;
+    height: 315px;
    // fullscreen: true;
 
-
+    border-radius: 5px;
 }
 
 mainbox {
     padding: 5px;
-            border-radius: 13px;
+    border-radius: 2px;
 
 }
 
@@ -80,7 +80,7 @@ size: 25px;
 element selected {
     background-color: #282c34  ;
     text-color: #fff ;
-        border-radius: 13px;
+        border-radius: 3px;
 }
 
 element urgent {
