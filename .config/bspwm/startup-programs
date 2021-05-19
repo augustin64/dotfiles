@@ -1,3 +1,9 @@
 nm-applet &
-termite &
-feh --bg-fill $WALLPAPER
+alacritty &
+feh --bg-fill $WALLPAPER &
+
+if pidof -x "redshift" >/dev/null; then
+   echo "redshift already running"
+else
+    redshift -l 43.1749:5.2251 &
+fi
