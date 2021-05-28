@@ -125,7 +125,11 @@ super + shift + ctrl + {Left,Down,Up,Right}
     xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
 # lockscreen
 super + l
-	betterlockscreen -l dim -u /home/augustin64/Pictures/wallpaper/nordwaifuu.png
+	betterlockscreen -l dim -u $WALLPAPER
+	
+super + @space
+	termite
+
 
 # Change volume
 XF86Audio{Raise,Lower}Volume
