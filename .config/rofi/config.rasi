@@ -17,9 +17,9 @@ configuration{
 }
 
 * {
-    background-color:#1e222a;
-    border-color: #d8dee9;
-    text-color: #d8dee9;
+    background-color:#3a3a3b;
+    border-color: #e6e6e4;
+    text-color: #c6c6c4;
     separator-color: @border-color;
     font: "Iosevka 12";
     show-icons: true;
@@ -78,7 +78,7 @@ size: 25px;
 }
 
 element selected {
-    background-color: #282c34  ;
+    background-color: #252525 ;
     text-color: #fff ;
         border-radius: 3px;
 }
@@ -89,7 +89,7 @@ element urgent {
 }
 
 element active {
-    background-color: #EBCB8B;
+    background-color: #252525;
     text-color: @background-color;
 }
 
