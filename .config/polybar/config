@@ -17,8 +17,8 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:background}
-foreground = #adb1b9   
+background = #3a3a3b
+foreground = #c6c6c4
 
 color0 = ${xrdb:color0}
 color1 = ${xrdb:color1}
@@ -208,7 +208,7 @@ interval = 60
 format = <label>
 format-background = ${colors.background}
 date = %{F${colors.foreground}󰥔 %H:%M%{F-}
-time-alt = %{F#61afef}󰃭 %a, %b %d%{F-}
+time-alt = %{F#5da3c3}󰃭 %a, %b %d%{F-}
 
 label = %date%%time%
 format-padding = 0
@@ -220,7 +220,7 @@ format = <label>
 format-prefix = " ﬙ " 
 label = %output% MB
 label-padding = 1
-format-prefix-foreground = #d19a66
+format-prefix-foreground = #dfb14f
 
 [module/powermenu]
 type = custom/menu
@@ -237,9 +237,9 @@ menu-0-0-exec = shutdown now
 menu-0-1 = Reboot
 menu-0-1-exec = reboot
 
-label-close-foreground = #b9fda6
-menu-0-0-foreground = #75c1ff
-menu-0-1-foreground = #75c1ff
+label-close-foreground = #a7dca9
+menu-0-0-foreground = #5da3c3
+menu-0-1-foreground = #5da3c3
 label-open-foreground =  #e06c75
 
 [module/battery]
@@ -262,14 +262,14 @@ format-discharging-foreground = ${colors.foreground}
 
 format-full-prefix = "  "
 
-format-full-prefix-foreground = #A0E8A2
+format-full-prefix-foreground = #a7dca9
 format-foreground = ${colors.color4}
 format-background = #2b2f37 
 
 label-discharging-foreground = #888e96
 #${colors.foreground}
 
-ramp-capacity-foreground =  #A0E8A2  
+ramp-capacity-foreground =  #a7dca9  
 label-charging-foreground = #888e96
 
 ramp-capacity-0 = "  " 
@@ -296,7 +296,7 @@ exec = amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]'
 format = <label>
 internal = 5.0
 label = %output% 
-label-foreground = #BF616A
+label-foreground = #448487
 label-padding = 1
 
 [module/xbacklight]
@@ -318,7 +318,7 @@ format = <label>
 label = CPU %percentage%%
 
 format-background = ${colors.background}
-format-foreground = #989cff
+format-foreground = #748fb7
 
 [module/xwindow]
 type = internal/xwindow
