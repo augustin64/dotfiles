@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# set up the two monitors for bspwm
+# NOTE This is a simplistic approach because I already know the settings I
+# want to apply.
+external_monitor=$(xrandr -q | grep 'HDMI1')
+
+echo $external_monitor
+if [[ $external_monitor == *"disconnected"* ]]; then
+    bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9 0
+    xrandr --output eDP1 --primary --mode 1366x768 --rotate normal && xrandr --output HDMI1 --off
+else
+    echo "activating external screen";
+    xrandr --output eDP1 --primary --mode 1366x768 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --right-of eDP1
+    bspc monitor HDMI1 -d 6 7 8 9 0
+    bspc monitor eDP1 -d 1 2 3 4 5
+fi
