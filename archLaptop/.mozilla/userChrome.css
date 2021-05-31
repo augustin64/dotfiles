@@ -2,8 +2,8 @@
 #titlebar {
     height: 10px !important;
     background-color: #2b2a33 !important;
-    transition: 0.4s !important;
-    transition-delay:2s !important;
+    transition: 0.2s !important;
+    transition-delay:3s !important;
 }
 #titlebar:hover {
     display: -moz-box !important;
@@ -13,8 +13,8 @@
 }
 .tabbrowser-tab {
     opacity: 0 !important;
-    transition: 0.4s !important;
-    transition-delay:2s !important;
+    transition: 0.2s !important;
+    transition-delay:3s !important;
 }
 
 #titlebar:hover .tabbrowser-tab {
