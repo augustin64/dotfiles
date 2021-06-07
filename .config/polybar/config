@@ -1,4 +1,4 @@
-﻿;==========================================================
+;==========================================================
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -36,13 +36,13 @@ color12 = ${xrdb:color12}
 color13 = ${xrdb:color13}
 color14 = ${xrdb:color14}
 color15 = ${xrdb:color15}
-dark-light = #272A2B 
+dark-light = #272A2B
 active-light = #313435
 
 [bar/top]
 monitor=eDP1
 tray-position = right
-tray-offset-x = -66%
+tray-offset-x = -75%
 tray-detached = true
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -64,15 +64,16 @@ override-redirect = true
 line-size = 3
 wm-restack = bspwm
 
-modules-left = bspwm 
+modules-left = bspwm
 modules-center = battery time
-modules-right = alsa temperature cpu mem powermenu
+modules-right = network alsa temperature cpu mem powermenu
 #temperature cpu mem battery powermenu
 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
 font-1 = JetBrainsMono Nerd Font:size=15;5
 font-2 = Material Design Icons:style=Bold:size=11;5
 font-3 = unifont:fontformat=truetype:size=11:antialias=true;
+
 
 [bar/top_external]
 bottom = false
@@ -84,7 +85,7 @@ modules-center = time
 tray-position = right
 tray-padding = 3
 tray-detached = true
-tray-offset-x = -84%
+tray-offset-x = -87%
 height = 27px
 padding-left = 2
 padding-right = 0
@@ -119,7 +120,7 @@ format-warn = <ramp> <label-warn>
 format-padding = 0
 label = %temperature-c%
 label-warn = %temperature-c%
-ramp-0 =  "󰜗" 
+ramp-0 =  "󰜗"
 ramp-foreground = #a4ebf3
 label-padding = 1
 
@@ -134,33 +135,33 @@ reverse-scroll = false
 
 format = <label-state>
 
-ws-icon-0 = 1;%{F#ffde8f}  
-ws-icon-1 = 2;%{F#ef6b63}    
-ws-icon-2 = 3;%{F#ff7573}
-ws-icon-3 = 4;%{F#c785d0}
-ws-icon-4 = 5;%{F#75c1ff}
-    
-ws-icon-5 = 6;%{F#8aefd6}
-ws-icon-6 = 7;%{F#a9fda6}
-ws-icon-7 = 8;%{F#ffff7c}
-ws-icon-8 = 9;%{F#f4a169}  
-ws-icon-9 = 0;%{F#ff6b63}    
+ws-icon-0 = 1;%{F#ffde8f}雷
+ws-icon-1 = 2;%{F#679c69}雷
+ws-icon-2 = 3;%{F#448487}雷
+ws-icon-3 = 4;%{F#d69820}雷
+ws-icon-4 = 5;%{F#cb231c}雷
+
+ws-icon-5 = 6;%{F#cb231c}雷
+ws-icon-6 = 7;%{F#d69820}雷
+ws-icon-7 = 8;%{F#448487}雷
+ws-icon-8 = 9;%{F#679c69}雷
+ws-icon-9 = 0;%{F#ffde8f}雷
 
 label-separator = ""
 label-separator-background = ${colors.background}
 
-label-focused =  %icon%  
+label-focused =  %{F#eadab1}雷
 label-focused-foreground = ${colors.foreground}
-label-focused-underline =  #7b7f87
+label-focused-underline =  #3a3a3b
 label-focused-padding = 1
 label-focused-background = ${colors.background}
 
-label-occupied =  %icon%  
-label-occupied-foreground = #646870  
+label-occupied = %icon%
+label-occupied-foreground = #3a3a3b
 label-occupied-background = ${colors.background}
 label-occupied-padding = 1
 
-label-empty = %icon%  
+label-empty = %{F#272727}雷
 label-empty-foreground =   ${colors.foreground}
 label-empty-padding = 1
 label-empty-background = ${colors.background}
@@ -173,7 +174,7 @@ label-urgent-padding = 1
 [module/alsa]
 type = internal/alsa
 format-volume = <bar-volume> <label-volume>
-label-volume = " "  
+label-volume = " "
 label-volume-foreground = ${colors.foreground}
 
 format-muted-foreground = ${colors.foreground}
@@ -191,10 +192,10 @@ bar-volume-foreground-4 = #61afef
 bar-volume-foreground-5 = #61afef
 bar-volume-foreground-6 = #61afef
 bar-volume-gradient = false
-bar-volume-indicator = 
+bar-volume-indicator =
 bar-volume-indicator-foreground = #61afef
 bar-volume-indicator-font = 2
-bar-volume-fill = ━ 
+bar-volume-fill = ━
 bar-volume-fill-foreground = #61afef
 bar-volume-fill-font = 2
 bar-volume-empty = ━
@@ -217,7 +218,7 @@ format-padding = 0
 type = custom/script
 exec = free -m | sed -n 's/^Mem:\s\+[0-9]\+\s\+\([0-9]\+\)\s.\+/\1/p'
 format = <label>
-format-prefix = " ﬙ " 
+format-prefix = " ﬙ "
 label = %output% MB
 label-padding = 1
 format-prefix-foreground = #dfb14f
@@ -233,7 +234,7 @@ label-close =  Cancel
 label-separator = |
 
 menu-0-0 = Shutdown
-menu-0-0-exec = shutdown now 
+menu-0-0-exec = shutdown now
 menu-0-1 = Reboot
 menu-0-1-exec = reboot
 
@@ -264,28 +265,28 @@ format-full-prefix = "  "
 
 format-full-prefix-foreground = #a7dca9
 format-foreground = ${colors.color4}
-format-background = #2b2f37 
+format-background = #2b2f37
 
 label-discharging-foreground = #888e96
 #${colors.foreground}
 
-ramp-capacity-foreground =  #a7dca9  
+ramp-capacity-foreground =  #a7dca9
 label-charging-foreground = #888e96
 
-ramp-capacity-0 = "  " 
-ramp-capacity-1 = "  " 
-ramp-capacity-2 = "  " 
-ramp-capacity-3 = "  " 
+ramp-capacity-0 = "  "
+ramp-capacity-1 = "  "
+ramp-capacity-2 = "  "
+ramp-capacity-3 = "  "
 ramp-capacity-4 = "  "
 
-animation-charging-0 = "  " 
-animation-charging-1 = "  " 
-animation-charging-2 = "  " 
-animation-charging-3 = "  " 
+animation-charging-0 = "  "
+animation-charging-1 = "  "
+animation-charging-2 = "  "
+animation-charging-3 = "  "
 animation-charging-4 = "  "
 
 animation-charging-foreground = #DF8890
-animation-charging-framerate = 910 
+animation-charging-framerate = 910
 format-discharging-padding = 1
 
 format-padding = 0
@@ -295,7 +296,7 @@ type = custom/script
 exec = amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]'
 format = <label>
 internal = 5.0
-label = %output% 
+label = %output%
 label-foreground = #448487
 label-padding = 1
 
@@ -312,8 +313,8 @@ format-padding = 1
 type = internal/cpu
 interval = 2.5
 
-format-prefix = "  " 
-format = <label> 
+format-prefix = "  "
+format = <label>
 
 label = CPU %percentage%%
 
@@ -323,6 +324,53 @@ format-foreground = #748fb7
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+interval = 1.0
+
+format-connected = <label-connected>
+
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <animation-packetloss> <label-connected>
+
+; All labels support the following tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+
+; Default: %ifname% %local_ip%
+label-connected = %upspeed% %downspeed%
+label-connected-foreground = #888e96
+
+; Default: (none)
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
+
 
 [settings]
 format-padding = 1
