@@ -135,7 +135,7 @@ reverse-scroll = false
 
 format = <label-state>
 
-ws-icon-0 = 1;%{F#ffde8f}雷
+ws-icon-0 = 1;%{F#e4c374}雷
 ws-icon-1 = 2;%{F#679c69}雷
 ws-icon-2 = 3;%{F#448487}雷
 ws-icon-3 = 4;%{F#d69820}雷
@@ -145,7 +145,7 @@ ws-icon-5 = 6;%{F#cb231c}雷
 ws-icon-6 = 7;%{F#d69820}雷
 ws-icon-7 = 8;%{F#448487}雷
 ws-icon-8 = 9;%{F#679c69}雷
-ws-icon-9 = 0;%{F#ffde8f}雷
+ws-icon-9 = 0;%{F#e4c374}雷
 
 label-separator = ""
 label-separator-background = ${colors.background}
