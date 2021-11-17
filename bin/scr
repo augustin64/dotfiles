@@ -1,0 +1,12 @@
+#!/bin/bash
+
+filename="$HOME/Pictures/Screenshots/$(date +%Y%m%d_%H%M.jpg)"
+
+if [[ "$1" == "t" ]];then
+    import "$filename"
+else
+    scrot "$filename"
+fi;
+
+sleep 1
+notify-send "Capture d'écran sauvegardée" "$filename" -i "$filename" -u low

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+IP=$( ip addr show dev wlp4s0 | sed -n '3p' | awk '{print $2}' )
+echo $IP
