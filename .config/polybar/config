@@ -17,7 +17,8 @@
 ;==========================================================
 
 [colors]
-background = #3a3a3b
+background = #3b3b40
+#3a3a3f
 foreground = #c6c6c4
 
 color0 = ${xrdb:color0}
@@ -40,7 +41,7 @@ dark-light = #272A2B
 active-light = #313435
 
 [bar/top]
-monitor=eDP1
+monitor=eDP-1
 tray-position = right
 tray-offset-x = -75%
 tray-detached = true
@@ -56,18 +57,18 @@ padding-left = 2
 padding-right = 2
 radius = 5.0
 height = 27px
-width = 99.5%
-offset-y = 0.25%
-offset-x = 0.25%
+width = 100%
+offset-y = 0%
+offset-x = 0%
 override-redirect = true
 
 line-size = 3
 wm-restack = bspwm
 
-modules-left = bspwm
-modules-center = battery time
-modules-right = network alsa temperature cpu mem powermenu
-#temperature cpu mem battery powermenu
+modules-left = bspwm network
+modules-center = time xwindow
+modules-right = mem cpu battery temperature alsa xbacklight powermenu
+#temperature cpu mem battery powermenu kdeconnect
 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
 font-1 = JetBrainsMono Nerd Font:size=15;5
@@ -77,7 +78,7 @@ font-3 = unifont:fontformat=truetype:size=11:antialias=true;
 
 [bar/top_external]
 bottom = false
-monitor = HDMI1
+monitor = HDMI2
 
 modules-left = bspwm
 modules-right = alsa powermenu
@@ -152,7 +153,7 @@ label-separator-background = ${colors.background}
 
 label-focused =  %{F#eadab1}雷
 label-focused-foreground = ${colors.foreground}
-label-focused-underline =  #3a3a3b
+label-focused-underline = ${colors.background}
 label-focused-padding = 1
 label-focused-background = ${colors.background}
 
@@ -212,7 +213,7 @@ date = %{F${colors.foreground}󰥔 %H:%M%{F-}
 time-alt = %{F#5da3c3}󰃭 %a, %b %d%{F-}
 
 label = %date%%time%
-format-padding = 0
+format-padding = 1
 
 [module/mem]
 type = custom/script
@@ -303,11 +304,11 @@ label-padding = 1
 [module/xbacklight]
 type = internal/xbacklight
 format = <label>
-format-prefix = "  "
-label = %percentage%
+format-prefix = " "
+label = " "
 format-prefix-foreground = #61afef
 label-foreground =   #D8DEE9
-format-padding = 1
+format-padding = 0
 
 [module/cpu]
 type = internal/cpu
@@ -316,18 +317,18 @@ interval = 2.5
 format-prefix = "  "
 format = <label>
 
-label = CPU %percentage%%
+label = %percentage%%
 
 format-background = ${colors.background}
 format-foreground = #748fb7
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...
+label = %title%
 
 [module/network]
 type = internal/network
-interface = wlp3s0
+interface = wlp4s0
 interval = 1.0
 
 format-connected = <label-connected>
@@ -370,7 +371,10 @@ animation-packetloss-1-foreground = #000000
 ; Framerate in milliseconds
 animation-packetloss-framerate = 500
 
-
+[module/kdeconnect]
+type = custom/script
+exec = "/home/augustin64/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh -d"
+tail = true
 
 [settings]
 format-padding = 1

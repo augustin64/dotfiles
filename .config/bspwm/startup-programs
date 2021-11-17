@@ -1,6 +1,14 @@
+#!/bin/sh
+
+numlockx &
+setxkbmap fr &
+picom &
+
+"$HOME/.config/polybar/launch.sh" &
+
 nm-applet &
 alacritty &
-feh --bg-fill $WALLPAPER &
+"$HOME/bin/bspwm-wallpaper-changer" --source local --sleep 300 --path /home/augustin64/Pictures/wallpaper/ &
 
 if pidof -x "redshift" >/dev/null; then
    echo "redshift already running"

@@ -1,24 +1,19 @@
-configuration{
+configuration {
     modi: "drun";
-    width: 27;
-    columns: 2;
-    lines: 5;
- 	font: "Inconsolata 8";
+    font: "Iosevka 8";
     show-icons: true;
-	icon-theme: "Tela-blue";
-    terminal: "termite";
+	  icon-theme: "Numix-Circle";
+    terminal: "alacritty";
     drun-display-format: "{icon} {name}";
     display-drun: "Run";
     location: 0;
-    separator-style: "solid";
     disable-history: false;
-    hide-scrollbar: true;
-
+    background-color: @background-color;
 }
 
 * {
-    background-color:#3a3a3b;
-    border-color: #e6e6e4;
+    background-color: #3b3b40;
+    border-color: #AAA;
     text-color: #c6c6c4;
     separator-color: @border-color;
     font: "Iosevka 12";
@@ -27,17 +22,16 @@ configuration{
 }
 
 window {
-    padding: 5px;
+    padding: 0px;
     height: 315px;
-   // fullscreen: true;
-
+    width: 315px;
+    columns: 1;
     border-radius: 5px;
 }
 
 mainbox {
     padding: 5px;
     border-radius: 2px;
-
 }
 
 inputbar {
@@ -47,11 +41,9 @@ inputbar {
 prompt {
     background-color: @border-color;
     padding: 5px 5px 0px;
-
     text-color: @background-color;
 }
 
-// Not used
 textbox-prompt-colon {
     expand: false;
     str: ":";
@@ -64,8 +56,7 @@ entry {
 listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
-      columns: 2;
-
+    columns: 1;
 }
 
 element {
@@ -73,14 +64,13 @@ element {
 }
 
 element-icon {
-size: 25px;
-
+    size: 25px;
 }
 
 element selected {
     background-color: #252525 ;
     text-color: #fff ;
-        border-radius: 3px;
+    border-radius: 3px;
 }
 
 element urgent {
