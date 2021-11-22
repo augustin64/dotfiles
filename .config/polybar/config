@@ -17,9 +17,11 @@
 ;==========================================================
 
 [colors]
-background = #3b3b40
-#3a3a3f
-foreground = #c6c6c4
+background = 			#191d25
+foreground = 			#b1b4ba
+background-alt = 	#15151d
+foreground-alt = 	#a4a7ac
+
 
 color0 = ${xrdb:color0}
 color1 = ${xrdb:color1}
@@ -41,7 +43,7 @@ dark-light = #272A2B
 active-light = #313435
 
 [bar/top]
-monitor=eDP-1
+# monitor=eDP1 | eDP-1
 tray-position = right
 tray-offset-x = -75%
 tray-detached = true
@@ -55,7 +57,7 @@ border-bottom-color = ${colors.background}
 
 padding-left = 2
 padding-right = 2
-radius = 5.0
+radius = 0.0
 height = 27px
 width = 100%
 offset-y = 0%
@@ -162,7 +164,7 @@ label-occupied-foreground = #3a3a3b
 label-occupied-background = ${colors.background}
 label-occupied-padding = 1
 
-label-empty = %{F#272727}雷
+label-empty = %{F#15151d}雷
 label-empty-foreground =   ${colors.foreground}
 label-empty-padding = 1
 label-empty-background = ${colors.background}
@@ -176,9 +178,9 @@ label-urgent-padding = 1
 type = internal/alsa
 format-volume = <bar-volume> <label-volume>
 label-volume = " "
-label-volume-foreground = ${colors.foreground}
+label-volume-foreground = ${colors.foreground-alt}
 
-format-muted-foreground = ${colors.foreground}
+format-muted-foreground = ${colors.foreground-alt}
 label-muted = ""
 
 format-muted-padding = 1
@@ -201,7 +203,7 @@ bar-volume-fill-foreground = #61afef
 bar-volume-fill-font = 2
 bar-volume-empty = ━
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground}
+bar-volume-empty-foreground = ${colors.foreground-alt}
 format-volume-padding = 1
 
 [module/time]
@@ -238,10 +240,13 @@ menu-0-0 = Shutdown
 menu-0-0-exec = shutdown now
 menu-0-1 = Reboot
 menu-0-1-exec = reboot
+menu-0-2 = Log out
+menu-0-2-exec = bspc quit
 
 label-close-foreground = #a7dca9
 menu-0-0-foreground = #5da3c3
 menu-0-1-foreground = #5da3c3
+menu-0-2-foreground = #5da3c3
 label-open-foreground =  #e06c75
 
 [module/battery]
@@ -307,7 +312,7 @@ format = <label>
 format-prefix = " "
 label = " "
 format-prefix-foreground = #61afef
-label-foreground =   #D8DEE9
+label-foreground =   #d8dee9
 format-padding = 0
 
 [module/cpu]
@@ -320,7 +325,8 @@ format = <label>
 label = %percentage%%
 
 format-background = ${colors.background}
-format-foreground = #748fb7
+format-foreground = #519fdf
+#748fb7
 
 [module/xwindow]
 type = internal/xwindow
