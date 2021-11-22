@@ -1,7 +1,13 @@
 #!/bin/bash
 
-INT="eDP-1"
-EXT="HDMI-2"
+if [[ $(xrandr --query) == *"eDP1"* ]]; then
+    INT="eDP1"
+    EXT="HDMI1"
+else
+    INT="eDP-1"
+    EXT="HDMI-1"
+fi;
+
 # set up the two monitors for bspwm
 # NOTE This is a simplistic approach because I already know the settings I
 # want to apply.
@@ -9,11 +15,31 @@ external_monitor=$(xrandr -q | grep "$EXT")
 
 echo "$external_monitor"
 if [[ "$external_monitor" == *"disconnected"* ]]; then
-    bspc monitor "$INT" -d 1 2 3 4 5 6 7 8 9 0
-    xrandr --output "$INT" --primary --mode 2048x1152 --rotate normal && xrandr --output "$EXT" --off
+    if pidof -x bspwm >/dev/null; then
+        bspc monitor "$INT" -d 1 2 3 4 5 6 7 8 9 0
+    fi;
+    xrandr \
+        --output "$INT" \
+        --primary \
+        --mode 2048x1152 \
+        --rotate normal &&
+    xrandr \
+        --output "$EXT" \
+        --off
 else
     echo "activating external screen";
-    xrandr --output "$INT" --primary --mode 2048x1152 --rotate normal --output "$EXT" --mode 1920x1080 --rotate normal --right-of "$INT"
-    bspc monitor "$EXT" -d 6 7 8 9 0
-    bspc monitor "$INT" -d 1 2 3 4 5
-fi
+    xrandr \
+        --output "$INT" \
+        --primary \
+        --mode 2048x1152 \
+        --rotate normal \
+        --output "$EXT" \
+        --mode 1920x1080 \
+        --rotate normal \
+        --right-of "$INT"
+    if pidof -x bspwm >/dev/null; then
+        bspc monitor "$EXT" -d 6 7 8 9 0
+        bspc monitor "$INT" -d 1 2 3 4 5
+    fi;
+fi;
+
