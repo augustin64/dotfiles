@@ -5,6 +5,9 @@ export PATH="$HOME/bin:$PATH"
 # gtk themes and term colorsheme
 #cp -r ~/Public/theme\ and\ icons/bsp/.gtkrc-2.0 ~/ &
 #cp -r ~/Public/theme\ and\ icons/bsp/settings.ini ~/.config/gtk-3.0/ &
+xset s off
+xset -dpms
+xset s noblank
 xrdb merge ~/.Xresources &
 
 # run the xrandr command if an external monitor is connected to the

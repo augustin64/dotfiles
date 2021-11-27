@@ -15,3 +15,5 @@ if pidof -x "redshift" >/dev/null; then
 else
     redshift -l 43.1749:5.2251 &
 fi
+
+libinput-gestures-setup start

@@ -3,9 +3,11 @@
 if [[ $(xrandr --query) == *"eDP1"* ]]; then
     INT="eDP1"
     EXT="HDMI1"
+    sed -i 's/eDP-1/eDP1/g' "$HOME/.config/polybar/config"
 else
     INT="eDP-1"
     EXT="HDMI-1"
+    sed -i 's/eDP1/eDP-1/g' "$HOME/.config/polybar/config"
 fi;
 
 # set up the two monitors for bspwm

@@ -43,7 +43,7 @@ dark-light = #272A2B
 active-light = #313435
 
 [bar/top]
-# monitor=eDP1 | eDP-1
+# monitor=eDP1 | eDP1
 tray-position = right
 tray-offset-x = -75%
 tray-detached = true
@@ -211,7 +211,7 @@ type = internal/date
 interval = 60
 format = <label>
 format-background = ${colors.background}
-date = %{F${colors.foreground}󰥔 %H:%M%{F-}
+date = %{F#b1b4ba}%H:%M
 time-alt = %{F#5da3c3}󰃭 %a, %b %d%{F-}
 
 label = %date%%time%
