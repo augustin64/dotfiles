@@ -1,0 +1,98 @@
+#!/bin/bash
+
+declare -a A=("$@")
+[[ -p /dev/stdin ]] && { \
+    mapfile -t -O ${#A[@]} A; set -- "${A[@]}"; \
+}
+[[ $1 ]] || set -- hello
+
+
+sudo modprobe -r ec_sys
+sudo modprobe ec_sys write_support=1
+
+enable () {
+    echo -n -e "\x8a" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=12 count=1 conv=notrunc 2> /dev/null
+    echo "0 on" | sudo tee /proc/acpi/ibm/led 1> /dev/null
+}
+
+disable () {
+    echo -n -e "\x0a" | sudo dd of="/sys/kernel/debug/ec/ec0/io" bs=1 seek=12 count=1 conv=notrunc 2> /dev/null
+    echo "0 off" | sudo tee /proc/acpi/ibm/led 1> /dev/null
+}
+
+flash () {
+    enable
+    if [[ $1 == "-" ]]; then
+        sleep 2
+    elif [[ $1 == "." ]]; then
+        sleep 0.5
+    fi;
+    disable
+}
+
+show () 
+{
+    for char in $1; do
+        flash $char
+        sleep 0.2
+    done;
+}
+
+
+
+
+declare -A morse
+morse[0]='- - - - -'
+morse[1]='. - - - -'
+morse[2]='. . - - -'
+morse[3]='. . . - -'
+morse[4]='. . . . -'
+morse[5]='. . . . .'
+morse[6]='- . . . .'
+morse[7]='- - . . .'
+morse[8]='- - - . .'
+morse[9]='- - - - .'
+morse[A]='. -'
+morse[B]='- . . .'
+morse[C]='- . - .'
+morse[D]='- . .'
+morse[E]='.'
+morse[F]='. . - .'
+morse[G]='- - .'
+morse[H]='. . . .'
+morse[I]='. .'
+morse[J]='. - - -'
+morse[K]='- . -'
+morse[L]='. - . .'
+morse[M]='- -'
+morse[N]='- .'
+morse[O]='- - -'
+morse[P]='. - - .'
+morse[Q]='- - . -'
+morse[R]='. - .'
+morse[S]='. . .'
+morse[T]='-'
+morse[U]='. . -'
+morse[V]='. . . -'
+morse[W]='. - -'
+morse[X]='- . . -'
+morse[Y]='- . - -'
+morse[Z]='- - . .'
+
+disable
+sleep 2
+
+for (( i=0; i < ${#1}; i++ ))
+do
+    c=${1:$i:1}
+    if [[ $c == $'\n' ]]; then
+        sleep 4
+    elif [[ $c == ' ' ]]; then
+        sleep 4
+    else
+        show "${morse[${c^}]}"
+    fi;
+    sleep 2
+done
+
+sudo modprobe -r ec_sys
