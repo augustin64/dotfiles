@@ -1,0 +1,77 @@
+#!/usr/bin/bash
+# List of aliases
+
+alias py="python3"
+alias venv="python3 -m venv"
+
+alias please="echo sudo \$(fc -nl -1) && sudo \$(fc -nl -1)"
+
+alias subs="youtube-dl $1 --skip-download --write-auto-sub"
+alias yt-mp3="youtube-dl --extract-audio --audio-format mp3 $1"
+alias ctemplate="cp ~/Documents/template.c"
+
+
+alias xit="exit"
+alias eit="exit"
+alias ext="exit"
+alias exi="exit"
+alias exiy="exit"
+alias :wq="exit"
+
+alias rtf2pdf="libreoffice --headless --invisible --norestore --convert-to pdf $1"
+
+alias win10stop="sudo virsh shutdown RDPWindows"
+alias win10start="sudo virsh net-start default & sudo virsh start RDPWindows"
+
+alias voc="cd ~/Documents/Ecole/vocabulaire-langues && python3 ./main.py"
+
+# alias aip="ip addr show dev wlp4s0 | sed -n '3p' | sed 's/ /\n/g' | sed -n '6p'"
+
+alias mute="amixer set Master toggle"
+alias mip="thinkmorse $(aip | sed 's/\./ /g' | awk -F/ '{print $1}')"
+
+mp2i-docker ()
+{
+    cd "/home/augustin64/Documents/Ecole/Informatique/mp2i-2021"
+    git pull
+    cd "/home/augustin64/Documents/Ecole/Informatique/mp2i-2021-augustin"
+    git fetch upstream
+    git merge upstream/main main -m "Merge branch 'main' of https://github.com/augustin64/mp2i-2021"
+    git rebase upstream/main -m "Merge branch 'main' of https://github.com/augustin64/mp2i-2021"
+    git push
+    sudo systemctl start docker
+    sudo docker run \
+        -p 8888:8888 \
+        -e JUPYTER_ENABLE_LAB=yes \
+        -v /home/augustin64/Documents/Ecole/Informatique:/home/jovyan \
+        qfortier/mp2i
+}
+
+compileAndRun ()
+{
+	mkdir out 2>/dev/null;
+  gcc $1 -o out/$1.out -std=c99 -lm; 
+	chmod +x out/$1.out; 
+	./out/$1.out
+}
+
+mkcd ()
+{
+    mkdir -p -- "$1" &&
+      cd -P -- "$1"
+}
+
+virt ()
+{
+if [[ "$1" == "" ]]; then
+    ls ~/.venv
+else
+    if [[ "$1" == "create" ]]; then
+        python3 -m venv "/home/augustin64/.venv/$2"
+    else
+        source "/home/augustin64/.venv/${1}/bin/activate"
+    fi
+fi
+}
+alias docker-adb="mp2i-docker & adb reverse tcp:8888 tcp:8888 && thinkmorse done"
+
