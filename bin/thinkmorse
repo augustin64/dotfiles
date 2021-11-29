@@ -95,4 +95,7 @@ do
     sleep 2
 done
 
+sleep 3
+echo "$1"
+enable
 sudo modprobe -r ec_sys
