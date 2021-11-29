@@ -113,6 +113,43 @@ font-1 = JetBrainsMono Nerd Font:size=18;5
 font-2 = Material Design Icons:style=Bold:size=13;3
 font-3 = unifont:fontformat=truetype:size=12:antialias=true;
 
+[bar/virtual]
+monitor=VIRTUAL1
+tray-position = right
+tray-offset-x = -75%
+tray-detached = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+bottom = false
+border-top-size = 0
+border-bottom-size = 0
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.background}
+
+padding-left = 2
+padding-right = 2
+radius = 0.0
+height = 27px
+width = 100%
+offset-y = 0%
+offset-x = 0%
+override-redirect = true
+
+line-size = 3
+wm-restack = bspwm
+
+modules-left = bspwm network
+modules-center = time xwindow
+modules-right = mem cpu battery temperature alsa xbacklight powermenu
+#temperature cpu mem battery powermenu kdeconnect
+
+font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
+font-1 = JetBrainsMono Nerd Font:size=15;5
+font-2 = Material Design Icons:style=Bold:size=11;5
+font-3 = unifont:fontformat=truetype:size=11:antialias=true;
+
+
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0

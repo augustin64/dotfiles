@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ $(adb reverse --list) == *"(reverse) tcp:5900 tcp:5900"* ]]; then
+    echo "Le serveur VNC est allumé, je ne touche à rien !"
+    exit 0
+fi;
+
+
 if [[ $(xrandr --query) == *"eDP1"* ]]; then
     INT="eDP1"
     EXT="HDMI1"

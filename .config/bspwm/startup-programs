@@ -4,7 +4,11 @@ numlockx &
 setxkbmap fr &
 picom &
 
-"$HOME/.config/polybar/launch.sh" &
+if pidof -x "polybar" >/dev/null; then
+   echo "polybar already running"
+else
+   "$HOME/.config/polybar/launch.sh" &
+fi;
 
 nm-applet &
 alacritty &
@@ -17,3 +21,5 @@ else
 fi
 
 libinput-gestures-setup start
+thinkmorse "bsp" &
+xinput set-prop 14 "Device Enabled" 0
