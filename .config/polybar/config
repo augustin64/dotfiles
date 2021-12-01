@@ -140,7 +140,7 @@ wm-restack = bspwm
 
 modules-left = bspwm network
 modules-center = time xwindow
-modules-right = mem cpu battery temperature alsa xbacklight powermenu
+modules-right = mem cpu battery temperature alsa powermenu
 #temperature cpu mem battery powermenu kdeconnect
 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3

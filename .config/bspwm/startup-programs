@@ -22,4 +22,10 @@ fi
 
 libinput-gestures-setup start
 thinkmorse "bsp" &
-xinput set-prop 14 "Device Enabled" 0
+if [[ $(adb devices) == *"HA0K78B4"* ]]; then
+   if pidof -x "x11vnc" >/dev/null; then
+      echo "" >/dev/null
+   else
+      vnc-android-only
+   fi;
+fi;

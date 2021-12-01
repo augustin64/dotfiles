@@ -40,8 +40,6 @@ else
 	#xrandr --delmode "$internal" "$screen1"
 
 	xrandr --output VIRTUAL1 --primary --mode "$virtual1"
-	
-	xrandr --output "$screen1" --mode "$virtual1"
 	#sleep 3s
 
 	xrandr
@@ -50,6 +48,7 @@ else
 
 	adb reverse tcp:5900 tcp:5900
 	x11vnc -clip "$virtual1"+0+0 -localhost -multiptr &
+	xrandr --output "$internal" --mode "$virtual1"
 
 	/home/augustin64/.config/polybar/launch_virtual.sh 2&>/dev/null &
 
