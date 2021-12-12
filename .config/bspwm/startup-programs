@@ -26,6 +26,8 @@ if [[ $(adb devices) == *"HA0K78B4"* ]]; then
    if pidof -x "x11vnc" >/dev/null; then
       echo "" >/dev/null
    else
+      #touchscreen=$(xinput list | grep "ELAN Touchscreen" | awk -Fid= '{print $2}' | awk '{print $1}')
+      #xinput set-prop "$touchscreen" "Device Enabled" 0
       vnc-android-only
    fi;
 fi;

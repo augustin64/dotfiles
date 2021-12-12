@@ -49,6 +49,7 @@ else
 	adb reverse tcp:5900 tcp:5900
 	x11vnc -clip "$virtual1"+0+0 -localhost -multiptr &
 	xrandr --output "$internal" --mode "$virtual1"
+	xbacklight -set 0
 
 	/home/augustin64/.config/polybar/launch_virtual.sh 2&>/dev/null &
 

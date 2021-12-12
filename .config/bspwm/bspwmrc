@@ -44,6 +44,8 @@ bspc config gapless_monocle false
 bspc config window_gap 10
 bspc config split_ratio 0.5
 
+bspc config pointer_modifier mod1
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 source set_theme
 source $HOME/.config/bspwm/startup-programs
