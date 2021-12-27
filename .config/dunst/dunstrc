@@ -301,14 +301,14 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#3c3c3d"
+    background = "#2a2d38"
     foreground = "#adb1b9"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     # icon = ~/.config/dunst/bell.png
 
 [urgency_normal]
-    background = "#3c3c3d"
+    background = "#2a2d38"
     foreground = "#ffffff"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
