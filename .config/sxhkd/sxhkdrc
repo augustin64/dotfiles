@@ -130,7 +130,7 @@ super + shift + ctrl + {Left,Down,Up,Right}
 
 # lockscreen
 super + shift + l
-	betterlockscreen -l dim -u "$HOME/Pictures/wallpaper/5c98w1s.jpg"
+	$HOME/bin/lockscreen
 	
 super + @space
 	termite

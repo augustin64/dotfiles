@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+source "$HOME/.config/dotfiles/load.sh"
+betterlockscreen -l dim -u "$WALLPAPER"
