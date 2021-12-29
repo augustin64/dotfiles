@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+
+function set_discocss_theme {
+	DISCOCSSDIR="$HOME/.config/discocss"
+
+	pywal-discord -t default -p "$DISCOCSSDIR/"
+
+	cat "$DISCOCSSDIR/userDiscord.css" > "$DISCOCSSDIR/tmp.css"
+	cat "$DISCOCSSDIR/pywal-discord-default.theme.css" >> "$DISCOCSSDIR/tmp.css"
+	mv "$DISCOCSSDIR/tmp.css" "$DISCOCSSDIR/custom.css"
+}
+
+function set_bspwm_theme {
+	. "${HOME}/.cache/wal/colors.sh"
+	bspc config normal_border_color "$color1"
+  bspc config active_border_color "$color2"
+  bspc config focused_border_color "$color15"
+}
+
+function set_firefox_theme {
+	pywalfox update
+}
+
+if [[ ! $1 ]]; then
+	echo "Call with $0 <wallpaper path>"
+	exit 0
+fi;
+
+feh --bg-fill "$1"
+
+mkdir -p "$HOME/.config/dotfiles"
+echo "$1" > "$HOME/.config/dotfiles/WALLPAPER"
+
+if [[ $2 == "-l" || $2 == "--light" ]]; then
+	wal -lnti "$1" > /dev/null
+else
+	wal -nti "$1" > /dev/null
+fi;
+
+set_bspwm_theme
+set_discocss_theme
+set_firefox_theme
