@@ -17,10 +17,8 @@ fi;
 setwall "$DEFAULT_WALL" 
 
 if [[ "$CHANGE_WALL" -eq 1 ]]; then
-   echo 1 > $HOME/testlog
    "$HOME/bin/bspwm-wallpaper-changer" --sleep "$WALL_UPDATE_FREQ" --path "$WALLPAPERS_PATH" &
 fi;
-echo $CHANGE_WAL >> $HOME/testlog
 
 if pidof -x "redshift" >/dev/null; then
    echo "redshift already running"
