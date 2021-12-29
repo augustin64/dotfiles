@@ -7,9 +7,11 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar
-polybar -r top &
+source "$HOME/.config/dotfiles/load.sh"
+NETWORK_INTERFACE="$NETWORK_INTERFACE" INT="$INTERNAL" polybar -r top &
 
-my_laptop_external_monitor=$(xrandr --query | grep 'HDMI1')
-if [[ $my_laptop_external_monitor = *connected* ]]; then
-    polybar -r top_external &
+external_monitor=$(xrandr --query | grep "$EXTERNAL")
+if [[ ! $external_monitor = *disconnected* ]]; then
+	echo "starting [bar/top_external]"
+  NETWORK_INTERFACE="$NETWORK_INTERFACE" EXT="$EXTERNAL" polybar -r top_external &
 fi

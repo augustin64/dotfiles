@@ -23,47 +23,12 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-
-# You can change the config vars by passing params to the executable. Don't change anything in this file
-
 SLEEP=600
 WP_DIR=/home/$USER/Pictures
 
-LOGFILE="/home/$USER/.gnome-wallpaper-changer.log"
-SOURCE="local"
+LOGFILE="/home/$USER/.bspwm-wallpaper-changer.log"
 
 RETRY_TIMEOUT=60
-
-function get_random_image_from_unsplash {
-    write_log "Getting image from Unsplash"
-
-    # Get a random featured image from Unsplash and save the response in $response
-    response=$(curl -i -s -S -X GET -H 'Authorization: Client-ID 53bf8603de0f9a6c69948a0a7120cf32ff4b2cdd5cfba750b1c6cb2fcd2fe24d' 'https://api.unsplash.com/photos/random?featured=1')
-
-    # Set regex to get our image url
-    regex_image="\"full\":\"([^\"]+)\""
-    regex_rate_limit="X-Ratelimit-Remaining: ([0-9]+)"
-
-    if [[ $response =~ $regex_rate_limit ]] ; then
-        REMAINING=${BASH_REMATCH[1]}
-        write_log "Rate limit remaining requests: $REMAINING"
-    fi
-
-    if [[ $response =~ $regex_image ]] ; then
-        write_log "Response from Unsplash contains image"
-
-        imageurl=${BASH_REMATCH[1]}
-
-        # Return the path to the image
-        echo $imageurl
-    else
-        write_log "Response from Unsplash didn't contain an image. Retrying in $RETRY_TIMEOUT seconds"
-
-        # Unsplash returned no image. Retry in 30 seconds
-        sleep $RETRY_TIMEOUT
-        get_random_image_from_unsplash
-    fi
-}
 
 function get_random_image_from_directory {
     cd $WP_DIR
@@ -72,25 +37,11 @@ function get_random_image_from_directory {
     length=$#
     random_num=$((( $RANDOM % ($length) ) + 1))
 
-    imagepath="file://$WP_DIR/${!random_num}"
+    imagepath="$WP_DIR/${!random_num}"
 
     write_log "Got new image from local path: '$imagepath'"
 
     echo $imagepath
-}
-
-function get_next_image {
-    case "$SOURCE" in
-        unsplash)
-            get_random_image_from_unsplash
-            ;;
-       local)
-            get_random_image_from_directory
-            ;;
-        *)
-            print_error_and_die "Source unknown. Exiting..."
-            ;;
-    esac
 }
 
 # *****************
@@ -122,10 +73,6 @@ function write_log {
 while test $# != 0
 do
     case "$1" in
-        -s|--source)
-            SOURCE="$2"
-            shift
-            ;;
         -p|--path)
             WP_DIR="$2"
             shift
@@ -149,16 +96,12 @@ while [ 1 ]
     write_log "Getting new image..."
 
     # Get new image
-    currentimage=$(get_next_image)
+    currentimage=$(get_random_image_from_directory)
 
     write_log "Setting new image as gnome wallpaper: '$currentimage'"
-    
-    color_data=$(convert "${currentimage}" -format %c -depth 8  histogram:info:- | tr -d ':' | sed -e 's/( *//' -e 's/, */,/g' -e 's/^  *//' | sort -n -u -r )
-    principal_color=$(echo "$color_data" | head -n 1 | awk '{print $3}')
-    # set as background
-    feh --bg-fill "$currentimage"
-    bspc config normal_border_color "$principal_color"
-    
+
+    setwall "$currentimage"
+
     write_log "Sleeping for $SLEEP seconds"
 
     sleep $SLEEP

@@ -17,11 +17,12 @@
 ;==========================================================
 
 [colors]
-background = 			#191d25
-foreground = 			#b1b4ba
-background-alt = 	#15151d
-foreground-alt = 	#a4a7ac
-
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
 
 color0 = ${xrdb:color0}
 color1 = ${xrdb:color1}
@@ -43,7 +44,7 @@ dark-light = #272A2B
 active-light = #313435
 
 [bar/top]
-# monitor=eDP1 | eDP1
+monitor = ${env:INT}
 tray-position = right
 tray-offset-x = -75%
 tray-detached = true
@@ -80,7 +81,7 @@ font-3 = unifont:fontformat=truetype:size=11:antialias=true;
 
 [bar/top_external]
 bottom = false
-monitor = HDMI2
+monitor = ${env:EXT}
 
 modules-left = bspwm
 modules-right = alsa powermenu
@@ -371,7 +372,7 @@ label = %title%
 
 [module/network]
 type = internal/network
-interface = wlp4s0
+interface = ${env:NETWORK_INTERFACE}
 interval = 1.0
 
 format-connected = <label-connected>

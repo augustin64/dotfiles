@@ -1,3 +1,4 @@
+@import "~/.cache/wal/colors-rofi-dark"
 configuration {
     modi: "drun";
     font: "Iosevka 12";
@@ -9,7 +10,7 @@ configuration {
     location: 0;
 }
 * {
-    selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
+    /*selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
     foreground:                  rgba ( 193, 193, 193, 100 % );
     normal-foreground:           @foreground;
     alternate-normal-background: #1a1d26;
@@ -29,7 +30,6 @@ configuration {
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  #262e48;
     border-color:                @foreground;
-    spacing:                     2;
     separatorcolor:              rgba ( 30, 37, 41, 100 % );
     urgent-background:           #1a1d26;
     selected-urgent-background:  rgba ( 57, 66, 73, 100 % );
@@ -38,7 +38,8 @@ configuration {
     alternate-active-foreground: @active-foreground;
     active-background:           #1a1d26;
     selected-active-background:  rgba ( 57, 66, 73, 100 % );
-    prompt-color:                #5d71b3;
+    prompt-color:                #5d71b3;*/
+    spacing:                     2;
 }
 window {
     background-color: @background;

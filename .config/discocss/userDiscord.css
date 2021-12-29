@@ -1,0 +1,170 @@
+/* Credit: https://github.com/clamyboy74/OneDarkDiscord */
+::placeholder, body, button, input, select, textarea {
+    font-family: "Iosevka";
+}
+.theme-dark,
+
+:root {
+   --background-primary: #30353d !important; /* extra colors #282c34 #30353d*/
+   --background-secondary: #282c34 !important;
+   --deprecated-text-input-bg: var(--background-tertiary) !important;
+   --text-muted: #a9a9a9 !important;
+   --text-normal: #e3e3e3 !important;
+   --header-secondary: #c9c9c9 !important;
+   --toast-header: var(--background-tertiary) !important;
+   --toast-contents: var(--background-secondary) !important;
+   --toast-box-shadow: rgba(0, 0, 0, 0.2) !important;
+   --toast-border: var(--background-tertiary) !important;
+   --color-brand-lighter: #4373c5;
+}
+/* Hides nitro tab in DMs list */
+.privateChannels-1nO12o [href="/store"]{ 
+    display: none;
+}
+
+/* Hide Gift Nitro in Chatbar */
+.container-1mpd15 > button {
+    display: none;
+}
+
+/*Revert mention color back to old version (easier to read)*/
+#app-mount .mention {
+    color: #687dc6;
+    background: rgba(114,137,218,0.15);
+}
+#app-mount .mention:hover {
+    color: white;
+    background: #7289da;
+}
+#app-mount .mentioned-xhSam7 .mention {
+    background: transparent;
+}
+#app-mount .mentioned-xhSam7 .mention:hover {
+    color: #687dc6;
+}
+
+/*smaller sticker size*/
+.assetWrapper-3GNt0z { 
+    max-height: 10vh;
+    max-width: 10vh;
+}
+.layer-3QrUeG {
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+.layers-3iHuyZ>.layer-3QrUeG.animating-rRxada *,
+.layers-3iHuyZ>.layer-3QrUeG.animating-rRxada {
+    pointer-events: auto !important;
+    will-change: unset;
+}
+
+.animating-rRxada.stop-animations {
+    z-index: 100 !important;
+}
+
+/* 🠗 get rid of the nitro icons 🠗 */
+.icon-Zc-uZZ {
+    display: none;
+}
+/* 🠗 server boost status icon 🠗 */
+.icon-3Povsy {
+    display: none;
+}
+
+/*revert font */
+html:root {
+    --font-display: var(--font-primary);
+}
+
+.channelNotice-2bJINM {
+    height: 20px;
+    margin: 0;
+    padding: 16px;
+    transition: 0.2s ease-in-out;
+}
+.channelNotice-2bJINM .textBlock-2FWDjE {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    transition: 0.3s ease-in-out;
+}
+.channelNotice-2bJINM button {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    transition: 0.3s ease-in-out;
+}
+.channelNotice-2bJINM:hover {
+    height: 152px;
+}
+.channelNotice-2bJINM:hover .textBlock-2FWDjE {
+    height: 16px;
+    margin: 4px auto;
+    opacity: 1;
+}
+.channelNotice-2bJINM:hover button {
+    height: 32px;
+    margin: unset;
+    padding: unset;
+    opacity: 1;
+}
+
+#private-channels [href="/discovery"] {display: none}
+#private-channels [href="/library"] {display: none}
+#private-channels [href="/store"] {display: none}
+
+.userPopout-3XzG_A {
+    --background-floating: var(--background-tertiary);
+}
+
+.headerTop-2y3V6H {
+    border-bottom: none;
+}
+
+.body-3iLsc4,
+.footer-1fjuF6 {
+    background-color: var(--background-secondary-alt);
+}
+
+.activity-fViXj7 {
+    border-top: 1px solid var(--background-modifier-accent);
+    padding: 16px;
+}
+
+.input-2_SIlA {
+    background-color: var(--deprecated-text-input-bg);
+    border: 1px solid var(--deprecated-text-input-border);
+}
+
+body{background-color: transparent;}
+
+/* Default "12px" */
+#app-mount{border-radius: 0px;}
+
+.aboutMeSection---MkQa:hover > .aboutMeBody-3JwDln {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+}
+
+.aboutMeBody-3JwDln {
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+}
+/*remove stickers tab and made them smaller*/
+.message-2qnXI6 .assetWrapper-3GNt0z {
+    max-width: 48px;
+    max-height: 48px
+}
+.stickerButton-3OEgwj {display: none}
+#sticker-picker-tab {display: none}
+
+/* emote fix */
+img.emote {
+    text-indent: 0;
+    white-space: nowrap;
+    width: auto;
+    position: relative;
+    top: 0.25ex;
+}

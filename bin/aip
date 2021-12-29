@@ -1,4 +1,5 @@
 #!/bin/bash
 
-IP=$( ip addr show dev wlp4s0 | sed -n '3p' | awk '{print $2}' )
+source "$HOME/.config/dotfiles/load.sh"
+IP=$( ip a show dev $NETWORK_INTERFACE | sed -n '3p' | awk '{print $2}' )
 echo $IP

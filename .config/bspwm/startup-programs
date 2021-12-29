@@ -1,8 +1,12 @@
 #!/bin/sh
 
+source "$HOME/.config/dotfiles/load.sh"
+
 numlockx &
 setxkbmap fr &
 picom &
+nm-applet &
+alacritty &
 
 if pidof -x "polybar" >/dev/null; then
    echo "polybar already running"
@@ -10,9 +14,13 @@ else
    "$HOME/.config/polybar/launch.sh" &
 fi;
 
-nm-applet &
-alacritty &
-"$HOME/bin/bspwm-wallpaper-changer" --source local --sleep 300 --path /home/augustin64/Pictures/wallpaper/ &
+setwall "$DEFAULT_WALL" 
+
+if [[ "$CHANGE_WALL" -eq 1 ]]; then
+   echo 1 > $HOME/testlog
+   "$HOME/bin/bspwm-wallpaper-changer" --sleep "$WALL_UPDATE_FREQ" --path "$WALLPAPERS_PATH" &
+fi;
+echo $CHANGE_WAL >> $HOME/testlog
 
 if pidof -x "redshift" >/dev/null; then
    echo "redshift already running"
@@ -20,14 +28,5 @@ else
     redshift -l 43.1749:5.2251 &
 fi
 
-libinput-gestures-setup start
-thinkmorse "bsp" &
-if [[ $(adb devices) == *"HA0K78B4"* ]]; then
-   if pidof -x "x11vnc" >/dev/null; then
-      echo "" >/dev/null
-   else
-      #touchscreen=$(xinput list | grep "ELAN Touchscreen" | awk -Fid= '{print $2}' | awk '{print $1}')
-      #xinput set-prop "$touchscreen" "Device Enabled" 0
-      vnc-android-only
-   fi;
-fi;
+libinput-gestures-setup start &
+"$HOME/.config/dotfiles/autostart.sh" &

@@ -1,53 +1,40 @@
 #!/bin/bash
+source "$HOME/.config/dotfiles/load.sh"
 
 if [[ $(adb reverse --list) == *"(reverse) tcp:5900 tcp:5900"* ]]; then
     echo "Le serveur VNC est allumé, je ne touche à rien !"
     exit 0
 fi;
 
-
-if [[ $(xrandr --query) == *"eDP1"* ]]; then
-    INT="eDP1"
-    EXT="HDMI1"
-    sed -i 's/eDP-1/eDP1/g' "$HOME/.config/polybar/config"
-else
-    INT="eDP-1"
-    EXT="HDMI-1"
-    sed -i 's/eDP1/eDP-1/g' "$HOME/.config/polybar/config"
-fi;
-
-# set up the two monitors for bspwm
-# NOTE This is a simplistic approach because I already know the settings I
-# want to apply.
-external_monitor=$(xrandr -q | grep "$EXT")
+external_monitor=$(xrandr -q | grep "$EXTERNAL")
 
 echo "$external_monitor"
 if [[ "$external_monitor" == *"disconnected"* ]]; then
     if pidof -x bspwm >/dev/null; then
-        bspc monitor "$INT" -d 1 2 3 4 5 6 7 8 9 0
+        bspc monitor "$INTERNAL" -d 1 2 3 4 5 6 7 8 9 0
     fi;
     xrandr \
-        --output "$INT" \
+        --output "$INTERNAL" \
         --primary \
-        --mode 2048x1152 \
+        --mode "$INTERNAL_DIM" \
         --rotate normal &&
     xrandr \
-        --output "$EXT" \
+        --output "$EXTERNAL" \
         --off
 else
     echo "activating external screen";
     xrandr \
-        --output "$INT" \
+        --output "$INTERNAL" \
         --primary \
-        --mode 2048x1152 \
+        --mode "$INTERNAL_DIM" \
         --rotate normal \
-        --output "$EXT" \
-        --mode 1920x1080 \
+        --output "$EXTERNAL" \
+        --mode "$EXTERNAL_DIM" \
         --rotate normal \
-        --right-of "$INT"
+        --right-of "$INTERNAL"
     if pidof -x bspwm >/dev/null; then
-        bspc monitor "$EXT" -d 6 7 8 9 0
-        bspc monitor "$INT" -d 1 2 3 4 5
+        bspc monitor "$EXTERNAL" -d 6 7 8 9 0
+        bspc monitor "$INTERNAL" -d 1 2 3 4 5
     fi;
 fi;
 
