@@ -1,2 +1,0 @@
-ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="0", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/augustin64/.Xauthority", RUN+="/usr/bin/su augustin64 -c /home/augustin64/bin/power_supply_off.sh"
-ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="1", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/augustin64/.Xauthority", RUN+="/usr/bin/su augustin64 -c /home/augustin64/bin/power_supply_on.sh"
