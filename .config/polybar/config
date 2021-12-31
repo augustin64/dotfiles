@@ -84,8 +84,8 @@ bottom = false
 monitor = ${env:EXT}
 
 modules-left = bspwm
-modules-right = alsa powermenu
-modules-center = time
+modules-right = battery alsa powermenu
+modules-center = time xwindow
 tray-position = right
 tray-padding = 3
 tray-detached = true
@@ -93,10 +93,10 @@ tray-offset-x = -87%
 height = 27px
 padding-left = 2
 padding-right = 0
-radius = 5.0
-width = 99.5%
-offset-y = 0.25%
-offset-x = 0.25%
+radius = 0.0
+width = 100%
+offset-y = 0%
+offset-x = 0%
 
 background = ${colors.background}
 foreground = ${colors.foreground}
