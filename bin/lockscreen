@@ -1,4 +1,17 @@
-#!/usr/bin/bash
+#!/usr/bin/zsh
 
-source "$HOME/.config/dotfiles/load.sh"
+. "$HOME/.config/dotfiles/load.sh"
+. "$HOME/.cache/wal/colors.sh"
+echo $HOST
+echo "locktext=\"${USER}@${HOSTNAME}\"
+font=\"iosevka\"
+time_format=\"%H:%M\"
+loginbox=\"${color0[2,7]}66\"
+greetercolor=\"${color8[2,7]}ff\"
+" > "$HOME/.config/betterlockscreenrc"
+
+echo $color0
+echo $(echo ${color0[2,7]} )66
+echo "$HOSTNAME"
+echo "$(hostname)"
 betterlockscreen -l dim -u "$WALLPAPER"
