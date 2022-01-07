@@ -3,7 +3,7 @@
 . "$HOME/.config/dotfiles/load.sh"
 . "$HOME/.cache/wal/colors.sh"
 echo $HOST
-echo "locktext=\"${USER}@${HOSTNAME}\"
+echo "locktext=\"${USER}@$(hostname)\"
 font=\"iosevka\"
 time_format=\"%H:%M\"
 loginbox=\"${color0[2,7]}66\"
