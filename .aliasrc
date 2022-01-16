@@ -28,23 +28,6 @@ alias voc="cd ~/Documents/Ecole/vocabulaire-langues && python3 ./main.py"
 alias mute="amixer set Master toggle"
 alias mip="thinkmorse \$(aip | sed 's/\./ /g' | awk -F/ '{print $1}')"
 
-mp2i-docker ()
-{
-    cd "/home/augustin64/Documents/Ecole/Informatique/mp2i-2021"
-    git pull
-    cd "/home/augustin64/Documents/Ecole/Informatique/mp2i-2021-augustin"
-    git fetch upstream
-    git merge upstream/main main -m "Merge branch 'main' of https://github.com/augustin64/mp2i-2021"
-    git rebase upstream/main -m "Merge branch 'main' of https://github.com/augustin64/mp2i-2021"
-    git push
-    sudo systemctl start docker
-    sudo docker run \
-        -p 8888:8888 \
-        -e JUPYTER_ENABLE_LAB=yes \
-        -v /home/augustin64/Documents/Ecole/Informatique:/home/jovyan \
-        qfortier/mp2i
-}
-
 compileAndRun ()
 {
 	mkdir out 2>/dev/null;

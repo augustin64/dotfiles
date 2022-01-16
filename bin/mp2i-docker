@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+[[ $1 ]] || set -- "--docker"
+
+cd "/home/augustin64/Documents/Ecole/Informatique/mp2i-2021" || return
+git pull
+cd "/home/augustin64/Documents/Ecole/Informatique/mp2i-2021-augustin" || exit
+git fetch upstream
+git merge upstream/main main -m "Merge branch 'main' of https://github.com/mp2i-fsm/mp2i-2021"
+git rebase upstream/main -m "Merge branch 'main' of https://github.com/mp2i-fsm/mp2i-2021"
+git push
+
+if [[ "$1" == "--docker" ]]; then
+	sudo systemctl start docker
+	sudo docker run -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v /home/augustin64/Documents/Ecole/Informatique:/home/jovyan qfortier/mp2i
+fi
