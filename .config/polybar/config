@@ -116,8 +116,8 @@ font-3 = unifont:fontformat=truetype:size=12:antialias=true;
 
 [bar/virtual]
 monitor=VIRTUAL1
-tray-position = right
-tray-offset-x = -75%
+tray-position = left
+tray-offset-x  = 3.5%
 tray-detached = true
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -127,7 +127,7 @@ border-bottom-size = 0
 border-top-color = ${colors.background}
 border-bottom-color = ${colors.background}
 
-padding-left = 2
+padding-left = 3
 padding-right = 2
 radius = 0.0
 height = 27px
@@ -139,7 +139,7 @@ override-redirect = true
 line-size = 3
 wm-restack = bspwm
 
-modules-left = bspwm network
+modules-left = bspwm-id network
 modules-center = time xwindow
 modules-right = mem cpu battery temperature alsa powermenu
 #temperature cpu mem battery powermenu kdeconnect
@@ -419,6 +419,12 @@ animation-packetloss-framerate = 500
 type = custom/script
 exec = "/home/augustin64/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh -d"
 tail = true
+
+[module/bspwm-id]
+type = custom/script
+exec = bspc query -D -d focused --names
+tail = true
+interval = 0.5
 
 [settings]
 format-padding = 1
