@@ -1,6 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
 SETTINGS_FILE="$HOME/.config/dotfiles/settings.sh"
 AUTOSTART_FILE="$HOME/.config/dotfiles/autostart.sh"
+SHELLRC="$HOME/.config/dotfiles/shellrc.sh"
 
 if [ -x $SETTINGS_FILE ]; then
 	source $SETTINGS_FILE
@@ -52,9 +53,14 @@ else
 		echo "Si vous souhaitez lancer un script au démarrage de votre bureau,"
 		echo "veuillez le placer dans $AUTOSTART_FILE"
 
-		touch "$HOME/.config/dotfiles/autostart.sh"
-		echo "#!/usr/bin/bash" > "$AUTOSTART_FILE"
+		touch "$AUTOSTART_FILE"
+		echo "#!/bin/bash" > "$AUTOSTART_FILE"
 		echo "# Contient des scripts à lancer au démarrage de bspwm" >> "$AUTOSTART_FILE"
 		chmod +x "$AUTOSTART_FILE"
+
+		touch "$SHELLRC"
+		echo "#!/bin/bash" > "$SHELLRC"
+		echo "# Contient des commandes/ scripts venant compléter le ~/.zshrc" >> "$SHELLRC"
+		chmod +x "$SHELLRC"
 	fi;
 fi;
