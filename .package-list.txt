@@ -20,6 +20,7 @@ pywal-discord-git
 rofi
 scrot
 sxhkd
+xcmenu-git
 xorg-xrdb
 xterm
 zathura

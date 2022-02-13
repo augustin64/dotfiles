@@ -131,6 +131,9 @@ super + shift + ctrl + {Left,Down,Up,Right}
 # lockscreen
 super + shift + l
 	$HOME/bin/lockscreen
+
+super + shift + k
+	scrot /tmp/scr; $HOME/bin/lockscreen /tmp/scr; rm /tmp/scr
 	
 super + @space
 	termite
@@ -157,3 +160,7 @@ Print + {super,_}
 
 super + {h,j,k,l}
 	xdotool mousemove_relative --sync -- {-20 0, 0 20, 0 -20, 20 0}
+
+# Roll back clipboard history
+ctrl + Insert
+	xcmenu --dmenu | dmenu | xclip -sel c
