@@ -26,15 +26,17 @@ if [[ ! $1 ]]; then
 	exit 0
 fi;
 
-feh --bg-fill "$1"
+if [[ ! $3 == "--no-reconfigure" ]]; then
+	feh --bg-fill "$1"
 
-mkdir -p "$HOME/.config/dotfiles"
-echo "$1" > "$HOME/.config/dotfiles/WALLPAPER"
+	mkdir -p "$HOME/.config/dotfiles"
+	echo "$1" > "$HOME/.config/dotfiles/WALLPAPER"
 
-if [[ $2 == "-l" || $2 == "--light" ]]; then
-	wal -lnti "$1" > /dev/null
-else
-	wal -nti "$1" > /dev/null
+	if [[ $2 == "-l" || $2 == "--light" ]]; then
+		wal -lnti "$1" > /dev/null
+	else
+		wal -nti "$1" > /dev/null
+	fi;
 fi;
 
 set_bspwm_theme
