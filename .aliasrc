@@ -1,17 +1,18 @@
 #!/usr/bin/bash
 # List of aliases
 
+
+# Shorts
 alias py="python3"
-alias ocmal="ocaml"
 alias venv="python3 -m venv"
-
-alias please="echo sudo \$(fc -nl -1) && sudo \$(fc -nl -1)"
-
 alias subs="youtube-dl $1 --skip-download --write-auto-sub"
 alias yt-mp3="youtube-dl --extract-audio --audio-format mp3 $1"
 alias ctemplate="cp ~/Documents/template.c"
+alias mute="amixer set Master toggle"
 
 
+# Typo
+alias ocmal="ocaml"
 alias xit="exit"
 alias eit="exit"
 alias ext="exit"
@@ -19,16 +20,22 @@ alias exi="exit"
 alias exiy="exit"
 alias wq="exit"
 
-alias rtf2pdf="libreoffice --headless --invisible --norestore --convert-to pdf $1"
 
+# Utils
+alias please="echo sudo \$(fc -nl -1) && sudo \$(fc -nl -1)"
+alias rtf2pdf="libreoffice --headless --invisible --norestore --convert-to pdf $1"
+alias voc="cd ~/Documents/Ecole/vocabulaire-langues && python3 ./main.py"
+alias mip="thinkmorse \$(aip | sed 's/\./ /g' | awk -F/ '{print $1}')"
+
+
+# Winapps utilities https://github.com/Fmstrat/winapps
 alias win10stop="sudo virsh shutdown RDPWindows"
 alias win10start="sudo virsh net-start default & sudo virsh start RDPWindows"
 
-alias voc="cd ~/Documents/Ecole/vocabulaire-langues && python3 ./main.py"
 
-alias mute="amixer set Master toggle"
-alias mip="thinkmorse \$(aip | sed 's/\./ /g' | awk -F/ '{print $1}')"
+# Functions definitions
 
+# Compile a C program to .out dir and run it
 compileAndRun ()
 {
 	mkdir out 2>/dev/null;
@@ -37,12 +44,14 @@ compileAndRun ()
 	./out/$1.out
 }
 
+# Create a dir and cd into it
 mkcd ()
 {
     mkdir -p -- "$1" &&
       cd -P -- "$1"
 }
 
+# Manage python virtual environments
 virt ()
 {
 if [[ "$1" == "" ]]; then
@@ -55,5 +64,3 @@ else
     fi
 fi
 }
-alias docker-adb="mp2i-docker & adb reverse tcp:8888 tcp:8888 && thinkmorse done"
-

@@ -14,6 +14,37 @@ super + r
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# lockscreen
+super + shift + l
+	$HOME/bin/lockscreen
+
+# lockscreen, with screenshot of the actual work as lockwall
+super + shift + k
+	scrot /tmp/scr; $HOME/bin/lockscreen /tmp/scr; rm /tmp/scr
+
+# Change volume
+XF86Audio{Raise,Lower}Volume
+    pulseaudio-ctl {up,down} 2
+
+XF86AudioMute
+    pulseaudio-ctl mute
+
+# Change brightness
+XF86MonBrightness{Up,Down}
+    brightnessctl s 215{+,-}
+
+# Take a screenshot
+Print + {super,_}
+    $HOME/bin/scr {t,f}
+
+# move mouse using keyboard
+super + {h,j,k,l}
+	xdotool mousemove_relative --sync -- {-20 0, 0 20, 0 -20, 20 0}
+
+# Roll back clipboard history
+ctrl + Insert
+	xcmenu --dmenu | dmenu | xclip -sel c
+
 #
 # bspwm hotkeys
 #
@@ -62,10 +93,6 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
-# super + {p,b,comma,period}
-#	bspc node -f @{parent,brother,first,second}
-
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
@@ -88,7 +115,7 @@ super + {o,i}
 super + shift + {1-9,0}
 	bspc desktop -f '^ {1,2,3,4,5,6,7,8,9,10}'
 
-# send to the give deskop
+# send to the given deskop
 super + ctrl + shift +{1-9,0}
 	bspc node -f -d '^ {1-9,10}'
 
@@ -99,10 +126,6 @@ super + ctrl + shift +{1-9,0}
 # preselect the direction
 super + ctrl + alt + {Left,Down,Up,Right}
 	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
@@ -127,40 +150,3 @@ super + alt + shift + {Left,Down,Up,Right}
 # move a floating window
 super + shift + ctrl + {Left,Down,Up,Right}
   xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
-
-# lockscreen
-super + shift + l
-	$HOME/bin/lockscreen
-
-super + shift + k
-	scrot /tmp/scr; $HOME/bin/lockscreen /tmp/scr; rm /tmp/scr
-	
-super + @space
-	termite
-
-# Change volume
-XF86Audio{Raise,Lower}Volume
-    pulseaudio-ctl {up,down} 2
-
-XF86AudioMute
-    pulseaudio-ctl mute
-
-# Change brightness
-XF86MonBrightness{Up,Down}
-    brightnessctl s 215{+,-}
-
-# Take a screenshot
-Print + {super,_}
-    $HOME/bin/scr {t,f}
-
-#super + k
-#    $HOME/bin/set_theme light
-
-# move mouse using keyboard
-
-super + {h,j,k,l}
-	xdotool mousemove_relative --sync -- {-20 0, 0 20, 0 -20, 20 0}
-
-# Roll back clipboard history
-ctrl + Insert
-	xcmenu --dmenu | dmenu | xclip -sel c

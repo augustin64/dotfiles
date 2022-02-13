@@ -2,17 +2,10 @@
 
 export PATH="$HOME/bin:$PATH"
 
-# gtk themes and term colorsheme
-#cp -r ~/Public/theme\ and\ icons/bsp/.gtkrc-2.0 ~/ &
-#cp -r ~/Public/theme\ and\ icons/bsp/settings.ini ~/.config/gtk-3.0/ &
 xset s off
 xset -dpms
 xset s noblank
 xrdb merge ~/.Xresources &
-
-# run the xrandr command if an external monitor is connected to the
-# laptop.  This must be executed before the polybar command, so that
-# polybar can set the two separate bars properly.
 
 if [ -x $HOME/bin/dual_monitor ];then
     dual_monitor
@@ -20,14 +13,12 @@ fi
 
 bspc config focus_follows_pointer true
 bspc config top_padding 27
-# borders
+
 bspc config focused_border_color "#555566"
-#74a4a7
 bspc config normal_border_color "#555566"
-#252525
+
 bspc config border_width 2
 bspc config borderless_monocle true
-#gaps 
 bspc config gapless_monocle false
 bspc config window_gap 10
 bspc config split_ratio 0.5
