@@ -1,8 +1,9 @@
 #!/usr/bin/zsh
-
 . "$HOME/.config/dotfiles/load.sh"
 . "$HOME/.cache/wal/colors.sh"
-echo $HOST
+
+[[ $1 ]] || set -- "$WALLPAPER"
+
 echo "locktext=\"${USER}@$(hostname)\"
 font=\"iosevka\"
 time_format=\"%H:%M\"
@@ -10,8 +11,4 @@ loginbox=\"${color0[2,7]}66\"
 greetercolor=\"${color8[2,7]}ff\"
 " > "$HOME/.config/betterlockscreenrc"
 
-echo $color0
-echo $(echo ${color0[2,7]} )66
-echo "$HOSTNAME"
-echo "$(hostname)"
-betterlockscreen -l dim -u "$WALLPAPER"
+betterlockscreen -l dim -u "$1"

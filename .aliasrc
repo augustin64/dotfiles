@@ -2,6 +2,7 @@
 # List of aliases
 
 alias py="python3"
+alias ocmal="ocaml"
 alias venv="python3 -m venv"
 
 alias please="echo sudo \$(fc -nl -1) && sudo \$(fc -nl -1)"

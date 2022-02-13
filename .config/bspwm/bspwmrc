@@ -19,7 +19,7 @@ if [ -x $HOME/bin/dual_monitor ];then
 fi
 
 bspc config focus_follows_pointer true
-bspc config top_padding 28
+bspc config top_padding 27
 # borders
 bspc config focused_border_color "#555566"
 #74a4a7

@@ -4,27 +4,19 @@ source "$HOME/.config/dotfiles/load.sh"
 
 numlockx &
 setxkbmap fr &
-picom &
-nm-applet &
-alacritty &
+xcmenu &
 
-if pidof -x "polybar" >/dev/null; then
-   echo "polybar already running"
-else
-   "$HOME/.config/polybar/launch.sh" &
-fi;
+pgrep -x picom       > /dev/null || picom &
+pgrep -x alacritty   > /dev/null || alacritty &
+pgrep -x nm-applet   > /dev/null || nm-applet &
+pgrep -x polybar     > /dev/null || "$HOME/.config/polybar/launch.sh" &
+pgrep -x redshift    > /dev/null || redshift -l 43.1749:5.2251 &
 
-setwall "$DEFAULT_WALL" 
+setwall "$DEFAULT_WALL" &
 
 if [[ "$CHANGE_WALL" -eq 1 ]]; then
    "$HOME/bin/bspwm-wallpaper-changer" --sleep "$WALL_UPDATE_FREQ" --path "$WALLPAPERS_PATH" &
 fi;
-
-if pidof -x "redshift" >/dev/null; then
-   echo "redshift already running"
-else
-    redshift -l 43.1749:5.2251 &
-fi
 
 libinput-gestures-setup start &
 "$HOME/.config/dotfiles/autostart.sh" &
