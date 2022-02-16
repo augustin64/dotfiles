@@ -45,6 +45,11 @@ super + {h,j,k,l}
 ctrl + Insert
 	"$HOME/bin/dmenu-clipboard.sh"
 
+# Activate/ deactivate focus
+super + shift + {f, q}
+	"$HOME/bin/focus.sh" {_,-q}
+
+
 #
 # bspwm hotkeys
 #
