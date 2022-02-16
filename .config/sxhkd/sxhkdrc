@@ -41,9 +41,9 @@ Print + {super,_}
 super + {h,j,k,l}
 	xdotool mousemove_relative --sync -- {-20 0, 0 20, 0 -20, 20 0}
 
-# Roll back clipboard history
+# Pick an element in clipboard history : https://github.com/gingivitis/dmenu/blob/master/dmenu-clipboard.sh
 ctrl + Insert
-	xcmenu --dmenu | dmenu | xclip -sel c
+	"$HOME/bin/dmenu-clipboard.sh"
 
 #
 # bspwm hotkeys
