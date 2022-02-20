@@ -1,0 +1,10 @@
+#!/bin/zsh
+# Petit script renvoyant la vitesse d'un train
+# SNCF à l'aide de l'API intégrée au réseau wifi
+
+
+[[ $(iwgetid $NETWORK_INTERFACE --raw) == "_SNCF_WIFI_INOUI" ]] || exit
+
+M_S_SPEED=$(curl -Ss https://wifi.sncf/router/api/train/gps | jq '.speed')
+KM_H_SPEED=$(echo $(( $M_S_SPEED * 3.6 )) | head -c 5)
+echo "$KM_H_SPEED km/h"

@@ -69,9 +69,8 @@ line-size = 3
 wm-restack = bspwm
 
 modules-left = bspwm network
-modules-center = time xwindow
+modules-center = time xwindow sncf-speed
 modules-right = mem cpu battery temperature alsa xbacklight powermenu
-#temperature cpu mem battery powermenu kdeconnect
 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
 font-1 = JetBrainsMono Nerd Font:size=15;5
@@ -142,7 +141,6 @@ wm-restack = bspwm
 modules-left = bspwm-id network
 modules-center = time xwindow
 modules-right = mem cpu battery temperature alsa powermenu
-#temperature cpu mem battery powermenu kdeconnect
 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
 font-1 = JetBrainsMono Nerd Font:size=15;5
@@ -312,7 +310,6 @@ format-foreground = ${colors.color4}
 format-background = #2b2f37
 
 label-discharging-foreground = #888e96
-#${colors.foreground}
 
 ramp-capacity-foreground =  #a7dca9
 label-charging-foreground = #888e96
@@ -329,7 +326,7 @@ animation-charging-2 = "  "
 animation-charging-3 = "  "
 animation-charging-4 = "  "
 
-animation-charging-foreground = #DF8890
+animation-charging-foreground = #df8890
 animation-charging-framerate = 910
 format-discharging-padding = 1
 
@@ -425,6 +422,11 @@ type = custom/script
 exec = bspc query -D -d focused --names
 tail = true
 interval = 0.5
+
+[module/sncf-speed]
+type = custom/script
+exec = "$HOME/bin/sncf-speed"
+interval = 3
 
 [settings]
 format-padding = 1
