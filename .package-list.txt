@@ -20,6 +20,7 @@ pywal-discord-git
 rofi
 scrot
 sxhkd
+wireless_tools
 xcmenu-git
 xorg-xrdb
 xterm
