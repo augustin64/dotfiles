@@ -3,7 +3,10 @@
 filename="$HOME/Pictures/Screenshots/$(date +%Y%m%d_%H%M.jpg)"
 
 if [[ "$1" == "t" ]];then
+    UNCLUTTER=1
+    killall unclutter || UNCLUTTER=0
     import "$filename"
+    unclutter -idle 1 -jitter 2 -root &
 else
     scrot "$filename"
 fi;
