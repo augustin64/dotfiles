@@ -1,12 +1,12 @@
 /* Credit: https://github.com/clamyboy74/OneDarkDiscord */
-::placeholder, body, button, input, select, textarea {
+::placeholder, body, button, input, select, textarea, .title-17SveM, .name-3Uvkvr, .profileCardUsernameRow-1bb6fi, .base-21yXnu {
     font-family: "Iosevka";
 }
 .theme-dark,
 
 :root {
-   --background-primary: #30353d !important; /* extra colors #282c34 #30353d*/
-   --background-secondary: #282c34 !important;
+   --background-primary: var(--color0) !important; /* extra colors #282c34 #30353d*/
+   --background-secondary: var(--color0) !important;
    --deprecated-text-input-bg: var(--background-tertiary) !important;
    --text-muted: #a9a9a9 !important;
    --text-normal: #e3e3e3 !important;
