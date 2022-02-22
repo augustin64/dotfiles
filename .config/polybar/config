@@ -212,35 +212,22 @@ label-urgent-padding = 1
 
 [module/alsa]
 type = internal/alsa
-format-volume = <bar-volume> <label-volume>
-label-volume = " "
-label-volume-foreground = ${colors.foreground-alt}
+format-volume = <ramp-volume> <label-volume>
+label-muted = muted
+label-muted-foreground = #66
 
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = ""
+label-volume-foreground = #bb
 
-format-muted-padding = 1
-format-muted-background = ${colors.background}
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = vol: 
+ramp-volume-foreground = #66
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #61afef
-bar-volume-foreground-1 = #61afef
-bar-volume-foreground-2 = #61afef
-bar-volume-foreground-3 = #61afef
-bar-volume-foreground-4 = #61afef
-bar-volume-foreground-5 = #61afef
-bar-volume-foreground-6 = #61afef
-bar-volume-gradient = false
-bar-volume-indicator =
-bar-volume-indicator-foreground = #61afef
-bar-volume-indicator-font = 2
-bar-volume-fill = ━
-bar-volume-fill-foreground = #61afef
-bar-volume-fill-font = 2
-bar-volume-empty = ━
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-format-volume-padding = 1
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = head: 
+ramp-headphones-foreground = #66
 
 [module/time]
 type = internal/date
