@@ -26,5 +26,11 @@ bspc config split_ratio 0.5
 bspc config pointer_modifier mod1
 bspc config border_radius 5
 
+bspc config ignore_ewmh_focus true
+
+bspc rule -a discord desktop=^3
+bspc rule -a discord follow=off
+bspc rule -a firefoxdeveloperedition desktop=^2
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 source $HOME/.config/bspwm/startup-programs
