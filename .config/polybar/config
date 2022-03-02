@@ -43,6 +43,7 @@ color15 = ${xrdb:color15}
 dark-light = #272A2B
 active-light = #313435
 
+
 [bar/top]
 monitor = ${env:INT}
 tray-position = right
@@ -113,6 +114,7 @@ font-1 = JetBrainsMono Nerd Font:size=18;5
 font-2 = Material Design Icons:style=Bold:size=13;3
 font-3 = unifont:fontformat=truetype:size=12:antialias=true;
 
+
 [bar/virtual]
 monitor=VIRTUAL1
 tray-position = left
@@ -148,7 +150,6 @@ font-2 = Material Design Icons:style=Bold:size=11;5
 font-3 = unifont:fontformat=truetype:size=11:antialias=true;
 
 
-
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -157,11 +158,15 @@ warn-temperature = 70
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 format-padding = 0
+
 label = %temperature-c%
 label-warn = %temperature-c%
+label-warn-foreground = #d66
+label-padding = 1
+
 ramp-0 =  "󰜗"
 ramp-foreground = #a4ebf3
-label-padding = 1
+
 
 [module/bspwm]
 type = internal/bspwm
@@ -191,7 +196,6 @@ label-separator-background = ${colors.background}
 
 label-focused =  %{F#eadab1}雷
 label-focused-foreground = ${colors.foreground}
-label-focused-underline = ${colors.background}
 label-focused-padding = 1
 label-focused-background = ${colors.background}
 
@@ -210,6 +214,7 @@ label-urgent-foreground = #88C0D0
 label-urgent-background = #2b2f37
 label-urgent-padding = 1
 
+
 [module/alsa]
 type = internal/alsa
 format-volume = <ramp-volume> <label-volume>
@@ -218,27 +223,23 @@ label-muted-foreground = #66
 
 label-volume-foreground = #bb
 
-; Only applies if <ramp-volume> is used
 ramp-volume-0 = vol: 
 ramp-volume-foreground = #66
 
-; If defined, it will replace <ramp-volume> when
-; headphones are plugged in to `headphone_control_numid`
-; If undefined, <ramp-volume> will be used for both
-; Only applies if <ramp-volume> is used
-ramp-headphones-0 = head: 
-ramp-headphones-foreground = #66
 
 [module/time]
 type = internal/date
 interval = 60
 format = <label>
 format-background = ${colors.background}
-date = %{F#b1b4ba}%H:%M
-time-alt = %{F#5da3c3}󰃭 %a, %b %d%{F-}
 
-label = %date%%time%
+date = %H:%M
+date-alt = %{F#5da3c3}󰃭 %a, %b %d%{F-}
+
+label = %date%
+label-foreground = #b1b4ba
 format-padding = 1
+
 
 [module/mem]
 type = custom/script
@@ -248,6 +249,7 @@ format-prefix = " ﬙ "
 label = %output% MB
 label-padding = 1
 format-prefix-foreground = #dfb14f
+
 
 [module/powermenu]
 type = custom/menu
@@ -271,6 +273,7 @@ menu-0-0-foreground = #5da3c3
 menu-0-1-foreground = #5da3c3
 menu-0-2-foreground = #5da3c3
 label-open-foreground =  #e06c75
+
 
 [module/battery]
 type = internal/battery
@@ -319,6 +322,7 @@ format-discharging-padding = 1
 
 format-padding = 0
 
+
 [module/volume]
 type = custom/script
 exec = amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]'
@@ -328,14 +332,16 @@ label = %output%
 label-foreground = #448487
 label-padding = 1
 
+
 [module/xbacklight]
 type = internal/xbacklight
 format = <label>
 format-prefix = " "
 label = " "
 format-prefix-foreground = #61afef
-label-foreground =   #d8dee9
+label-foreground = #d8dee9
 format-padding = 0
+
 
 [module/cpu]
 type = internal/cpu
@@ -348,61 +354,43 @@ label = %percentage%%
 
 format-background = ${colors.background}
 format-foreground = #519fdf
-#748fb7
+
 
 [module/xwindow]
 type = internal/xwindow
 label = %title%
 
+label-maxlen = 50
+
+
 [module/network]
 type = internal/network
 interface = ${env:NETWORK_INTERFACE}
-interval = 1.0
+interval = 3.0
 
 format-connected = <label-connected>
-
 format-disconnected = <label-disconnected>
-
-; Available tags:
-;   <label-connected> (default)
-;   <label-packetloss>
-;   <animation-packetloss>
 format-packetloss = <animation-packetloss> <label-connected>
 
-; All labels support the following tokens:
-;   %ifname%    [wireless+wired]
-;   %local_ip%  [wireless+wired]
-;   %local_ip6% [wireless+wired]
-;   %essid%     [wireless]
-;   %signal%    [wireless]
-;   %upspeed%   [wireless+wired]
-;   %downspeed% [wireless+wired]
-;   %linkspeed% [wired]
-
-; Default: %ifname% %local_ip%
 label-connected = %upspeed% %downspeed%
 label-connected-foreground = #888e96
 
-; Default: (none)
 label-disconnected = not connected
 label-disconnected-foreground = #66ffffff
 
-; Default: (none)
-;label-packetloss = %essid%
-;label-packetloss-foreground = #eefafafa
-
-; Only applies if <animation-packetloss> is used
 animation-packetloss-0 = ⚠
 animation-packetloss-0-foreground = #ffa64c
 animation-packetloss-1 = 📶
 animation-packetloss-1-foreground = #000000
-; Framerate in milliseconds
+
 animation-packetloss-framerate = 500
+
 
 [module/kdeconnect]
 type = custom/script
 exec = "/home/augustin64/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh -d"
 tail = true
+
 
 [module/bspwm-id]
 type = custom/script
@@ -410,10 +398,12 @@ exec = bspc query -D -d focused --names
 tail = true
 interval = 0.5
 
+
 [module/sncf-speed]
 type = custom/script
 exec = "$HOME/bin/sncf-speed"
 interval = 3
+
 
 [settings]
 format-padding = 1
