@@ -33,6 +33,11 @@ alias win10stop="sudo virsh shutdown RDPWindows"
 alias win10start="sudo virsh net-start default & sudo virsh start RDPWindows"
 
 
+# Move quickly between workspaces
+alias info-perso="cd $HOME/Documents/Ecole/Informatique/mp2i-2021-augustin/personnal"
+alias ecole="cd $HOME/Documents/Ecole"
+
+
 # Functions definitions
 
 # Compile a C program to .out dir and run it
