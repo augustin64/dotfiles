@@ -179,17 +179,17 @@ reverse-scroll = false
 
 format = <label-state>
 
-ws-icon-0 = 1;%{F#e4c374}雷
-ws-icon-1 = 2;%{F#679c69}雷
-ws-icon-2 = 3;%{F#448487}雷
-ws-icon-3 = 4;%{F#d69820}雷
-ws-icon-4 = 5;%{F#cb231c}雷
+ws-icon-0 = 1;%{F#e4c374}•
+ws-icon-1 = 2;%{F#679c69}•
+ws-icon-2 = 3;%{F#448487}•
+ws-icon-3 = 4;%{F#d69820}•
+ws-icon-4 = 5;%{F#cb231c}•
 
-ws-icon-5 = 6;%{F#cb231c}雷
-ws-icon-6 = 7;%{F#d69820}雷
-ws-icon-7 = 8;%{F#448487}雷
-ws-icon-8 = 9;%{F#679c69}雷
-ws-icon-9 = 0;%{F#e4c374}雷
+ws-icon-5 = 6;%{F#cb231c}•
+ws-icon-6 = 7;%{F#d69820}•
+ws-icon-7 = 8;%{F#448487}•
+ws-icon-8 = 9;%{F#679c69}•
+ws-icon-9 = 0;%{F#e4c374}•
 
 label-separator = ""
 label-separator-background = ${colors.background}
@@ -204,7 +204,7 @@ label-occupied-foreground = #3a3a3b
 label-occupied-background = ${colors.background}
 label-occupied-padding = 1
 
-label-empty = %{F#15151d}雷
+label-empty = %{F#15151d}•
 label-empty-foreground =   ${colors.foreground}
 label-empty-padding = 1
 label-empty-background = ${colors.background}

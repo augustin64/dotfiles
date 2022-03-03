@@ -6,7 +6,9 @@ if [[ "$1" == "t" ]];then
     UNCLUTTER=1
     killall unclutter || UNCLUTTER=0
     import "$filename"
-    unclutter -idle 1 -jitter 2 -root &
+    if [[ $UNCLUTTER == 1 ]]; then
+        unclutter -idle 1 -jitter 2 -root &
+    fi;
 else
     scrot "$filename"
 fi;
