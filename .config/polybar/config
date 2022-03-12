@@ -141,7 +141,7 @@ line-size = 3
 wm-restack = bspwm
 
 modules-left = bspwm-id network
-modules-center = time xwindow
+modules-center = time xwindow sncf-speed
 modules-right = mem cpu battery temperature alsa powermenu
 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=11;3
@@ -402,7 +402,7 @@ interval = 0.5
 [module/sncf-speed]
 type = custom/script
 exec = "$HOME/bin/sncf-speed"
-interval = 3
+interval = 10
 
 
 [settings]

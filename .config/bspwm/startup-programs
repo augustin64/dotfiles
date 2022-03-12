@@ -7,6 +7,7 @@ setxkbmap fr &
 xcmenu &
 
 pgrep -x picom       > /dev/null || picom &
+pgrep -x pulseaudio  > /dev/null || pulseaudio --start &
 pgrep -x alacritty   > /dev/null || alacritty &
 pgrep -x nm-applet   > /dev/null || nm-applet &
 pgrep -x polybar     > /dev/null || "$HOME/.config/polybar/launch.sh" &
