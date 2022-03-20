@@ -7,7 +7,34 @@ if [[ $1 == "menu" ]]; then
     [[ $action == "" ]] && exit
     "$0" "$action"
     exit
-fi;
+fi
+
+list_connected ()
+{
+    bluetoothctl paired-devices | cut -f2 -d' '|
+    while read -r uuid
+    do
+        info=$(bluetoothctl info "$uuid")
+        if echo "$info" | grep -q "Connected: yes"; then
+            echo "$info" | grep "Name" | awk -v uuid="$uuid" '{print $2 " " uuid }'
+        fi
+    done
+}
+
+if [[ $1 == "disconnect" ]]; then
+    selection=$(list_connected | rofi -dmenu | awk '{print $NF}')
+    [[ $selection == "" ]] && exit
+    bluetoothctl disconnect "$selection"
+    exit
+fi
+
+if [[ $1 == "connect" ]]; then
+    selection=$(bluetoothctl paired-devices | awk '{for(i=3;i<=NF;++i)printf $i " "; print $2}' | rofi -dmenu | awk '{print $NF}')
+    [[ $selection == "" ]] && exit
+    bluetoothctl connect "$selection"
+    exit
+fi
+
 
 action=$(bluetoothctl paired-devices | rofi -dmenu | awk '{print $2}')
 
