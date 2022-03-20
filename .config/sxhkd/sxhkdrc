@@ -22,6 +22,10 @@ super + shift + l
 super + shift + k
 	scrot /tmp/scr; $HOME/bin/lockscreen /tmp/scr; rm /tmp/scr
 
+# bluetoothctl
+super + b
+	bluetooth-dmenu
+
 # Change volume
 XF86Audio{Raise,Lower}Volume
     pulseaudio-ctl {up,down} 2

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+[[ $1 ]] || set -- "menu"
+
+if [[ $1 == "menu" ]]; then
+    action=$(echo -e "connect\ndisconnect" | rofi -dmenu)
+    [[ $action == "" ]] && exit
+    "$0" "$action"
+    exit
+fi;
+
+action=$(bluetoothctl paired-devices | rofi -dmenu | awk '{print $2}')
+
+[[ $action == "" ]] && exit
+
+bluetoothctl "$1" "$action"

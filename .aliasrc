@@ -4,6 +4,7 @@
 
 # Shorts
 alias py="python3"
+alias nv="nvim"
 alias venv="python3 -m venv"
 alias subs="youtube-dl $1 --skip-download --write-auto-sub"
 alias yt-mp3="youtube-dl --extract-audio --audio-format mp3 $1"

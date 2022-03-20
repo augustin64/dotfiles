@@ -396,7 +396,7 @@ tail = true
 type = custom/script
 exec = bspc query -D -d focused --names
 tail = true
-interval = 0.5
+interval = 0.25
 
 
 [module/sncf-speed]

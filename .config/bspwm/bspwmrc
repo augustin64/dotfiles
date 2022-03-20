@@ -31,6 +31,7 @@ bspc config ignore_ewmh_focus true
 bspc rule -a discord desktop=^3
 bspc rule -a discord follow=off
 bspc rule -a firefoxdeveloperedition desktop=^2
+bspc rule -a numworks-epsilon state=floating
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 source $HOME/.config/bspwm/startup-programs
