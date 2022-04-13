@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+[[ $1 ]] || set -- "--push"
+
+if [[ ! $(git remote) == *"upstream"* ]]; then
+	echo "No 'upstream' remote"
+	echo "Enter 'upstream' repo URL (without .git)"
+	read -r UPSTREAM
+	git remote add upstream "$UPSTREAM.git"
+	"$0" "$1"
+fi;
+
+UPSTREAM=$(git remote get-url upstream)
+
+git fetch upstream
+git merge upstream/main main -m "Merge branch 'main' of $UPSTREAM"
+
+[[ $1 == "--no-push" ]] || git push
