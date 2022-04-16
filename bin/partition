@@ -1,0 +1,20 @@
+#!/bin/bash
+# Download the first Music sheet of a Music found on google and open it in zathura
+
+[[ $1 ]] || exit
+
+rm /tmp/partition.pdf 2&> /dev/null
+
+URL=$(googler --notweak --json "partition type:pdf $*" | jq '.[0]["url"]' -r)
+
+echo "$URL"
+
+wget \
+    --quiet \
+    "$URL" \
+    --output-document=/tmp/partition.pdf
+
+zathura \
+    --fork \
+    --page 0 \
+    /tmp/partition.pdf
