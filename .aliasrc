@@ -60,13 +60,14 @@ mkcd ()
 # Manage python virtual environments
 virt ()
 {
+[[ -f "$HOME/.venv" ]] || mkdir -p "$HOME/.venv"
 if [[ "$1" == "" ]]; then
     ls ~/.venv
 else
     if [[ "$1" == "create" ]]; then
-        python3 -m venv "/home/augustin64/.venv/$2"
+        python3 -m venv "$HOME/.venv/$2"
     else
-        source "/home/augustin64/.venv/${1}/bin/activate"
+        source "$HOME/.venv/${1}/bin/activate"
     fi
 fi
 }

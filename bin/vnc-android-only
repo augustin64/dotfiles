@@ -5,6 +5,8 @@
 # android-tools (adb, to make an usb connection between the android device and the computer)
 # libnotify (to allow notifications, because it's the only way to see that the chaos is done)
 
+ANDROID_PIN="0000" # Put your android PIN here
+
 internal="eDP1"
 screen1="2048x1152"
 virtual1="1920x1200"
@@ -51,8 +53,13 @@ else
 	xrandr --output "$internal" --mode "$virtual1"
 	xbacklight -set 0
 
-	/home/augustin64/.config/polybar/launch_virtual.sh 2&>/dev/null &
+	"$HOME/.config/polybar/launch_virtual.sh" 2&>/dev/null &
 
+	adb shell monkey -p com.realvnc.viewer.android 1 # Launch VNC on android
+	adb shell input keyevent 82 # Wake up screen
+	adb shell input text $ANDROID_PIN # Unlock phone/ tablet
+	sleep 3
+	adb shell input tap 275 200 # Launch VNC connection
 	echo "Done"
 fi;
 

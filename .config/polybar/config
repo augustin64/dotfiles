@@ -388,7 +388,7 @@ animation-packetloss-framerate = 500
 
 [module/kdeconnect]
 type = custom/script
-exec = "/home/augustin64/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh -d"
+exec = "$HOME/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh -d"
 tail = true
 
 
