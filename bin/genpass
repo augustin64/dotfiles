@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+# Generate a random password of $1 characters matching $2 RegEx
+
+[[ $1 ]] || set -- "15"
+[[ $2 ]] || set -- "$1" "a-zA-Z0-9\-\%\!"
+
+cat /dev/urandom | tr -dc "$2" | head -c "$1"
+echo ""

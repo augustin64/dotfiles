@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+# Requires root android and adb connected
+
+[[ $1 ]] || set -- 0
+[[ $2 ]] || set -- "$1" "rgb"
+
+set_light () {
+    adb shell "su -c \"echo $2 > /sys/class/leds/$1/brightness\""
+}
+
+[[ "$2" == *"r"* ]] && set_light "red"   "$1"
+[[ "$2" == *"g"* ]] && set_light "green" "$1"
+[[ "$2" == *"b"* ]] && set_light "blue"  "$1"
+

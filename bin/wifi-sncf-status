@@ -1,0 +1,46 @@
+#!/bin/bash
+
+. "$HOME/.config/dotfiles/settings.sh"
+
+[[ $(iwgetid "$NETWORK_INTERFACE" --raw) == "_SNCF_WIFI_INOUI" ]] || exit
+
+STATUS=$(curl -Ss https://wifi.sncf/router/api/connection/status)
+
+CONSUMED=$(echo "$STATUS" | jq '.["consumed_data"]')
+REMAINING=$(echo "$STATUS" | jq '.["remaining_data"]')
+
+GRANTED_DATA=$(( CONSUMED + REMAINING ))
+REMAINING_PERCENT=$(( 100 * REMAINING / GRANTED_DATA ))
+
+echo "$REMAINING_PERCENT % restants"
+
+[[ $REMAINING_PERCENT == 0 ]] || exit
+
+echo "Changement de l'adresse mac"
+
+mac random
+
+MAC=$(macchanger -s "$NETWORK_INTERFACE" | head -n 1 | awk '{print $3}')
+
+# Nécessite des cookies à partir d'ici, ne fonctionne donc que partiellement,
+# Et utilise en grande partie des websockets (HTTP/1.1) et (HTTP/2)
+
+curl -H "Content-Type: application/json" \
+	-d '{"without21NetConnection":true}' \
+  "https://wifi.sncf/router/api/connection/activate/auto"
+
+generate_registry_data () {
+    cat <<EOF
+{
+  "reference": "AUTO-LOGIN-PROFILE-ID",
+  "grant_delay": "0",
+  "authenticationType": "auto",
+  "grantId": "$1",
+  "travelClass": "5"
+}
+EOF
+}
+
+curl -H "Content-Type: application/json" \
+	-d "$(generate_registry_data $MAC)" \
+  http://wifi.sncf/api/login

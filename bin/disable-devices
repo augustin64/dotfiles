@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+# Désactive tous les périphériques d'entrée pour une durée donnée
+[[ $1 ]] || set -- 60
+
+DEVICES=$(xinput list | grep -E "slave" | awk -Fid= '{print $2}' | awk '{print $1}')
+
+# Désactive les périphériques un à un
+for i in $DEVICES; do
+    xinput set-prop "$i" "Device Enabled" 0 >/dev/null
+done;
+
+echo "Device locked"
+
+sleep "$1"
+
+# Réactive les périphériques
+for i in $DEVICES; do
+    xinput set-prop "$i" "Device Enabled" 1 2>/dev/null
+done;

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+. "$HOME/.config/dotfiles/settings.sh"
+
+[[ $1 ]] || set -- "random"
+
+if [[ $1 == "random" ]]; then
+	sudo ip link set "$NETWORK_INTERFACE" down
+	sudo macchanger -r "$NETWORK_INTERFACE"
+elif [[ $1 == "restore" ]]; then
+	sudo ip link set "$NETWORK_INTERFACE" down
+	sudo macchanger -p "$NETWORK_INTERFACE"
+else
+	echo "unrecognized option $1"
+	echo "Usage: $0 [OPTIONS]"
+	echo -e "\trandom \trandomize mac address (default option)"
+	echo -e "\trestore\trestore default mac address"
+	exit 1
+fi;
+
+sudo ip link set "$NETWORK_INTERFACE" up

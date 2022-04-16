@@ -1,4 +1,5 @@
 #!/bin/bash
+DMENU="rofi -dmenu"
 
 [[ $1 ]] || set -- "menu"
 
@@ -22,21 +23,21 @@ list_connected ()
 }
 
 if [[ $1 == "disconnect" ]]; then
-    selection=$(list_connected | rofi -dmenu | awk '{print $NF}')
+    selection=$(list_connected | $DMENU | awk '{print $NF}')
     [[ $selection == "" ]] && exit
     bluetoothctl disconnect "$selection"
     exit
 fi
 
 if [[ $1 == "connect" ]]; then
-    selection=$(bluetoothctl paired-devices | awk '{for(i=3;i<=NF;++i)printf $i " "; print $2}' | rofi -dmenu | awk '{print $NF}')
+    selection=$(bluetoothctl paired-devices | awk '{for(i=3;i<=NF;++i)printf $i " "; print $2}' | $DMENU | awk '{print $NF}')
     [[ $selection == "" ]] && exit
     bluetoothctl connect "$selection"
     exit
 fi
 
 
-action=$(bluetoothctl paired-devices | rofi -dmenu | awk '{print $2}')
+action=$(bluetoothctl paired-devices | $DMENU | awk '{print $2}')
 
 [[ $action == "" ]] && exit
 
