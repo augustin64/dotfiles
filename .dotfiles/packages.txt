@@ -1,10 +1,13 @@
+alacritty
 betterlockscreen
 bspwm-rounded-corners
 canta-icon-theme
+cronie
 discocss-git
 dunst
 fortune-mod
 fzf
+jq
 lightdm
 lightdm-gtk-greeter
 nerd-fonts-complete
@@ -13,6 +16,8 @@ network-manager-applet
 numix-circle-icon-theme-git
 picom
 polybar
+pulseaudio
+pulseaudio-ctl
 python-pywal
 python-pywalfox
 python-ueberzug
@@ -22,7 +27,9 @@ scrot
 sxhkd
 wireless_tools
 xcmenu-git
+xorg
 xorg-xrdb
 xterm
 zathura
 zathura-pdf-mupdf
+zsh

@@ -1,0 +1,14 @@
+bluez
+bluez-utils
+chrome-gnome-shell
+code-minimap-bin
+codium
+discord
+discocss-git
+firefox-developer-edition
+lightdm-gtk-greeter-settings
+nodejs
+ntfs-3g
+pavucontrol
+wget
+youtube-dl

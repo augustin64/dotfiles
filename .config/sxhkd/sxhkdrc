@@ -35,7 +35,7 @@ XF86AudioMute
 
 # Change brightness
 XF86MonBrightness{Up,Down}
-    brightnessctl s 215{+,-}
+    brightnessctl s 5%{+,-}
 
 # Take a screenshot
 Print + {super,_}
