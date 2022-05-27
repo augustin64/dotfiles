@@ -7,7 +7,7 @@ xset -dpms
 xset s noblank
 xrdb merge ~/.Xresources &
 
-if [ -x $HOME/bin/dual_monitor ];then
+if [ -x $HOME/.local/share/bin/dual_monitor ];then
     dual_monitor
 fi
 
