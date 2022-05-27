@@ -16,11 +16,11 @@ super + Escape
 
 # lockscreen
 super + shift + l
-	$HOME/bin/lockscreen
+	lockscreen
 
 # lockscreen, with screenshot of the actual work as lockwall
 super + shift + k
-	scrot /tmp/scr; $HOME/bin/lockscreen /tmp/scr; rm /tmp/scr
+	scrot /tmp/scr; lockscreen /tmp/scr; rm /tmp/scr
 
 # bluetoothctl
 super + b
@@ -39,7 +39,7 @@ XF86MonBrightness{Up,Down}
 
 # Take a screenshot
 Print + {super,_}
-    $HOME/bin/scr {t,f}
+    scr {t,f}
 
 # move mouse using keyboard
 super + {h,j,k,l}
@@ -47,11 +47,11 @@ super + {h,j,k,l}
 
 # Pick an element in clipboard history : https://github.com/gingivitis/dmenu/blob/master/dmenu-clipboard.sh
 ctrl + Insert
-	"$HOME/bin/dmenu-clipboard.sh"
+	dmenu-clipboard.sh
 
 # Activate/ deactivate focus
 super + shift + {f, q}
-	"$HOME/bin/focus.sh" {_,-q}
+	focus.sh {_,-q}
 
 
 #
@@ -159,3 +159,4 @@ super + alt + shift + {Left,Down,Up,Right}
 # move a floating window
 super + shift + ctrl + {Left,Down,Up,Right}
   xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
+

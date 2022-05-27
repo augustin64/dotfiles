@@ -16,7 +16,7 @@ pgrep -x redshift    > /dev/null || redshift -l 43.1749:5.2251 &
 setwall "$DEFAULT_WALL" &
 
 if [[ "$CHANGE_WALL" -eq 1 ]]; then
-   "$HOME/bin/bspwm-wallpaper-changer" --sleep "$WALL_UPDATE_FREQ" --path "$WALLPAPERS_PATH" &
+   bspwm-wallpaper-changer --sleep "$WALL_UPDATE_FREQ" --path "$WALLPAPERS_PATH" &
 fi;
 
 libinput-gestures-setup start &

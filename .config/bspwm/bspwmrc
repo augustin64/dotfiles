@@ -1,6 +1,6 @@
 #! /bin/sh
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/share/bin:$PATH"
 
 xset s off
 xset -dpms
@@ -28,9 +28,9 @@ bspc config border_radius 5
 
 bspc config ignore_ewmh_focus true
 
-bspc rule -a discord desktop=^3
+bspc rule -a discord desktop=^4
 bspc rule -a discord follow=off
-bspc rule -a firefoxdeveloperedition desktop=^2
+bspc rule -a firefoxdeveloperedition desktop=^3
 bspc rule -a numworks-epsilon state=floating
 
 pgrep -x sxhkd > /dev/null || sxhkd &

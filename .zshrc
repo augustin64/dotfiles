@@ -2,7 +2,7 @@
 source "$HOME/.config/dotfiles/load.sh"
 source "$HOME/.aliasrc"
 
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/share/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
 

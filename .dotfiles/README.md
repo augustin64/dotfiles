@@ -15,5 +15,5 @@ systemctl enable lightdm
 
 Edit crontab (`crontab -e`)
 ```
-*/5	*	*	*	*	$HOME/bin/battery.sh
+*/5	*	*	*	*	$HOME/.local/share/bin/battery.sh
 ```

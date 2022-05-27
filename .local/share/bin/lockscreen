@@ -11,4 +11,4 @@ loginbox=\"${color0[2,7]}66\"
 greetercolor=\"${color8[2,7]}ff\"
 " > "$HOME/.config/betterlockscreenrc"
 
-betterlockscreen -l dim -u "$1"
+betterlockscreen -l dim

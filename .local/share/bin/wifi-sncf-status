@@ -14,7 +14,7 @@ REMAINING_PERCENT=$(( 100 * REMAINING / GRANTED_DATA ))
 
 echo "$REMAINING_PERCENT % restants"
 
-[[ $REMAINING_PERCENT == 0 ]] || exit
+ [[ $REMAINING_PERCENT == 0 ]] || exit
 
 echo "Changement de l'adresse mac"
 
@@ -24,6 +24,10 @@ MAC=$(macchanger -s "$NETWORK_INTERFACE" | head -n 1 | awk '{print $3}')
 
 # Nécessite des cookies à partir d'ici, ne fonctionne donc que partiellement,
 # Et utilise en grande partie des websockets (HTTP/1.1) et (HTTP/2)
+
+curl -H "Content-Type: application/json" \
+  -d '{}' \
+  "https://sncf-api.streamonboard.com/api/auth"
 
 curl -H "Content-Type: application/json" \
 	-d '{"without21NetConnection":true}' \
