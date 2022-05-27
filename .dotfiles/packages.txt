@@ -15,9 +15,9 @@ networkmanager
 network-manager-applet
 numix-circle-icon-theme-git
 picom
+pipewire
+pipewire-pulse
 polybar
-pulseaudio
-pulseaudio-ctl
 python-pywal
 python-pywalfox
 python-ueberzug
@@ -26,6 +26,7 @@ rofi
 scrot
 sxhkd
 wireless_tools
+wireplumber
 xcmenu-git
 xorg
 xorg-xrdb
