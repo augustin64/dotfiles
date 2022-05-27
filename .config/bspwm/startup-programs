@@ -6,8 +6,8 @@ numlockx &
 setxkbmap fr &
 xcmenu &
 
-pgrep -x picom       > /dev/null || picom &
-pgrep -x pulseaudio  > /dev/null || pulseaudio --start &
+pgrep -x picom       > /dev/null || picom --experimental-backend &
+pgrep -x pipewire    > /dev/null || pipewire & pipewire-pulse & wireplumber &
 pgrep -x alacritty   > /dev/null || alacritty &
 pgrep -x nm-applet   > /dev/null || nm-applet &
 pgrep -x polybar     > /dev/null || "$HOME/.config/polybar/launch.sh" &

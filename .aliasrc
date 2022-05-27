@@ -35,7 +35,7 @@ alias win10start="sudo virsh net-start default & sudo virsh start RDPWindows"
 
 
 # Move quickly between workspaces
-alias info-perso="cd $HOME/Documents/Ecole/Informatique/mp2i-2021-augustin/personnal"
+alias info-perso="cd $HOME/Documents/Ecole/Informatique/mp2i-2021-augustin/personal"
 alias ecole="cd $HOME/Documents/Ecole"
 
 

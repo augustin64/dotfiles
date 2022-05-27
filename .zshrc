@@ -10,7 +10,7 @@ export EDITOR="nvim"
 export ZSH_DISABLE_COMPFIX="true"
 export TRASH="$HOME/.local/share/Trash/files"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="macovsky"
 cat "$HOME/.cache/wal/sequences"
 
 plugins=(

@@ -1,0 +1,4 @@
+[submodule ".local/share/wallpapers"]
+	path = .local/share/wallpapers
+	url = https://gitlab.com/augustin64/wallpapers.git
+	branch = main
