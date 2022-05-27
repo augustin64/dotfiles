@@ -11,7 +11,10 @@ export ZSH_DISABLE_COMPFIX="true"
 export TRASH="$HOME/.local/share/Trash/files"
 
 ZSH_THEME="macovsky"
-cat "$HOME/.cache/wal/sequences"
+
+if [[ "$XDG_SESSION_DESKTOP" = "bspwm" ]]; then
+    cat "$HOME/.cache/wal/sequences"
+fi
 
 plugins=(
     git

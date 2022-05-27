@@ -23,46 +23,34 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+. "$HOME/.config/dotfiles/load.sh" # loads WALLPAPERS_PATH var
 SLEEP=600
-WP_DIR=/home/$USER/Pictures
-
-LOGFILE="/home/$USER/.bspwm-wallpaper-changer.log"
-
-RETRY_TIMEOUT=60
 
 function get_random_image_from_directory {
-    cd $WP_DIR
+    cd $WALLPAPERS_PATH
 
     set -- *
     length=$#
     random_num=$((( $RANDOM % ($length) ) + 1))
 
-    imagepath="$WP_DIR/${!random_num}"
-
-    write_log "Got new image from local path: '$imagepath'"
+    imagepath="$WALLPAPERS_PATH/${!random_num}"
 
     echo $imagepath
 }
 
-# *****************
-# Helper functions
-# *****************
+function set_wallpaper {
+    echo "Changing $XDG_SESSION_DESKTOP wallpaper to $1"
 
-# Simple error printer
-function print_error_and_die {
-    write_log "fatal: $1"
-    exit 9
-}
+    if [[ "$XDG_SESSION_DESKTOP" = "gnome"* ]]; then
+        gsettings set org.gnome.desktop.background picture-uri "file://$1"
+        gsettings set org.gnome.desktop.background picture-uri-dark "file://$1"
 
-# Checks if last command was successful
-function check_exit_status {
-    if [ $? -ne 0 ]; then
-        print_error_and_die "$1, exiting..." "$2"
+    elif [[ "$XDG_SESSION_DESKTOP" = "bspwm" ]]; then
+        setwall "$1"
+    else
+        echo "Unrecognised session $XDG_SESSION_DESKTOP"
+        exit 1
     fi
-}
-
-function write_log {
-    echo "$(date): $1" >> "$LOGFILE"
 }
 
 # ************
@@ -74,7 +62,7 @@ while test $# != 0
 do
     case "$1" in
         -p|--path)
-            WP_DIR="$2"
+            WALLPAPERS_PATH="$2"
             shift
             ;;
 
@@ -86,23 +74,13 @@ do
     shift
 done
 
-write_log "----------- Started application ----------------"
-
 # Do the main loop which changes the image
 while [ 1 ]
     do
     set -- *
 
-    write_log "Getting new image..."
-
-    # Get new image
     currentimage=$(get_random_image_from_directory)
-
-    write_log "Setting new image as gnome wallpaper: '$currentimage'"
-
-    setwall "$currentimage"
-
-    write_log "Sleeping for $SLEEP seconds"
+    set_wallpaper "$currentimage"
 
     sleep $SLEEP
 done
