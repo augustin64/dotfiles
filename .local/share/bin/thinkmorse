@@ -6,6 +6,7 @@ declare -a A=("$@")
 }
 [[ $1 ]] || set -- hello
 
+set -- "$(echo $1 | sed 'y/āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜĀÁǍÀĒÉĚÈĪÍǏÌŌÓǑÒŪÚǓÙǕǗǙǛç/aaaaeeeeiiiioooouuuuüüüüAAAAEEEEIIIIOOOOUUUUÜÜÜÜç/')"
 
 enable () {
     sudo fw-ectool led power white
