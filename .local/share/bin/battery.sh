@@ -14,5 +14,5 @@ power_supply_state=$(cat /sys/class/power_supply/AC*/online);
 
 if [[ "$battery_level" -le 15 && "$power_supply_state" = 0 ]]; then
     notify-send "Battery low" "Battery level is ${battery_level}%" --urgency=critical;
-    mpg123 "$HOME/Sounds/low_battery.mp3";
+    mpg123 "$HOME/Media/Sounds/low_battery.mp3";
 fi
