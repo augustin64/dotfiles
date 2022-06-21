@@ -24,6 +24,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 . "$HOME/.config/dotfiles/load.sh" # loads WALLPAPERS_PATH var
+. "$HOME/.local/share/bin/pywal-apply"
 SLEEP=600
 
 function get_random_image_from_directory {
@@ -42,8 +43,12 @@ function set_wallpaper {
     echo "Changing $XDG_SESSION_DESKTOP wallpaper to $1"
 
     if [[ "$XDG_SESSION_DESKTOP" = "gnome"* ]]; then
+        wal -nsti "$1" > /dev/null
+        echo "$1" > ~/.config/dotfiles/WALLPAPER
         gsettings set org.gnome.desktop.background picture-uri "file://$1"
         gsettings set org.gnome.desktop.background picture-uri-dark "file://$1"
+        set_discocss_theme
+        set_firefox_theme
 
     elif [[ "$XDG_SESSION_DESKTOP" = "bspwm" ]]; then
         setwall "$1"
