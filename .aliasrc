@@ -10,7 +10,7 @@ alias subs="youtube-dl $1 --skip-download --write-auto-sub"
 alias yt-mp3="youtube-dl --extract-audio --audio-format mp3 $1"
 alias ctemplate="cp ~/Documents/template.c"
 alias mute="amixer set Master toggle"
-
+alias mk="./make.sh"
 
 # Typo
 alias ocmal="ocaml"
