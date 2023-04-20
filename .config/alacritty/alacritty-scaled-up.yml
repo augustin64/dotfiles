@@ -5,7 +5,7 @@ window:
 font:
   normal:
     family: iosevka
-  size: 8
+  size: 15
 colors:
   primary:
     background: '0x1e2127'

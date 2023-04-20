@@ -10,10 +10,15 @@ CONSUMED=$(echo "$STATUS" | jq '.["consumed_data"]')
 REMAINING=$(echo "$STATUS" | jq '.["remaining_data"]')
 
 GRANTED_DATA=$(( CONSUMED + REMAINING ))
-REMAINING_PERCENT=$(( 100 * REMAINING / GRANTED_DATA ))
+if [[ $CONSUMED != 0 ]]; then
+  REMAINING_PERCENT=$(( 100 * REMAINING / GRANTED_DATA ))
+else
+  REMAINING_PERCENT=0
+fi;
 
-echo "$REMAINING_PERCENT % restants"
+echo "${REMAINING_PERCENT}% restants"
 
+exit 0;
  [[ $REMAINING_PERCENT == 0 ]] || exit
 
 echo "Changement de l'adresse mac"

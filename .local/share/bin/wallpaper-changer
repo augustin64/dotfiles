@@ -25,7 +25,10 @@
 
 . "$HOME/.config/dotfiles/load.sh" # loads WALLPAPERS_PATH var
 . "$HOME/.local/share/bin/pywal-apply"
-SLEEP=600
+
+SLEEP=300
+
+echo Started wallpaper-changer
 
 function get_random_image_from_directory {
     cd $WALLPAPERS_PATH
@@ -52,6 +55,11 @@ function set_wallpaper {
 
     elif [[ "$XDG_SESSION_DESKTOP" = "bspwm" ]]; then
         setwall "$1"
+
+    elif [[ "$XDG_SESSION_DESKTOP" = "hyprland" ]]; then
+        hyprctl hyprpaper unload all
+        hyprctl hyprpaper preload "$1"
+        hyprctl hyprpaper wallpaper eDP-1,"$1"
     else
         echo "Unrecognised session $XDG_SESSION_DESKTOP"
         exit 1

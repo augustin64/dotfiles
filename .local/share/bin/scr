@@ -1,17 +1,42 @@
 #!/bin/bash
 
-filename="$HOME/Pictures/Screenshots/$(date +%Y%m%d_%H%M.jpg)"
+filename="Pictures/Screenshots/$(date +%Y%m%d_%H%M)-$(cat /dev/urandom | tr -dc '0-9' | head -c 4).jpg"
+ERROR=0
+
+
+screen-capture () {
+    if [[ $1 == select ]]; then
+        if [[ $XDG_SESSION_TYPE == wayland ]]; then
+            grim -g "$(slurp)" "$HOME/$filename" || ERROR=1
+            wl-copy < "$filename"
+        else
+            UNCLUTTER=1
+            killall unclutter || UNCLUTTER=0
+            import "$HOME/$filename"
+            if [[ $UNCLUTTER == 1 ]]; then
+                unclutter -idle 1 -jitter 2 -root &
+            fi
+        fi
+    else
+        if [[ $XDG_SESSION_TYPE == wayland ]]; then
+            grim "$HOME/$filename"
+            wl-copy < "$filename"
+        else
+            scrot "$HOME/$filename"
+        fi
+    fi
+}
 
 if [[ "$1" == "t" ]];then
-    UNCLUTTER=1
-    killall unclutter || UNCLUTTER=0
-    import "$filename"
-    if [[ $UNCLUTTER == 1 ]]; then
-        unclutter -idle 1 -jitter 2 -root &
-    fi;
+    screen-capture select
 else
-    scrot "$filename"
+    screen-capture
 fi;
 
-sleep 1
-notify-send "Capture d'écran sauvegardée" "$filename" -i "$filename" -u low
+sleep 0.5
+
+if [[ $ERROR == 0 ]]; then
+    notify-send "Capture d'écran sauvegardée" "~/$filename" -i "$HOME/$filename" -u low
+else
+    notify-send "Capture d'écran annulée" -u low
+fi

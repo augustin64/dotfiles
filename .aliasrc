@@ -6,10 +6,11 @@
 alias py="python3"
 alias nv="nvim"
 alias venv="python3 -m venv"
-alias subs="youtube-dl $1 --skip-download --write-auto-sub"
-alias yt-mp3="youtube-dl --extract-audio --audio-format mp3 $1"
-alias ctemplate="cp ~/Documents/template.c"
-alias mute="amixer set Master toggle"
+
+alias yt-subs="youtube-dl $1 --skip-download --write-auto-sub"
+# https://news.ycombinator.com/item?id=17460722
+alias yt-mp3="youtube-dl --extract-audio --add-metadata --xattrs --embed-thumbnail --audio-quality 0 --audio-format mp3 $1"
+
 alias mk="./make.sh"
 
 # Typo
