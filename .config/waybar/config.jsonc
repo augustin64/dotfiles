@@ -1,0 +1,210 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "modules-left": [
+    // "custom/launcher",
+    "wlr/workspaces",
+    "memory",
+    "cpu"
+  ],
+  "modules-center": [
+    "custom/music-player",
+    "clock",
+    "custom/dunst"
+  ],
+  "modules-right": [
+    "tray",
+    // "inhibitor",
+    "custom/updates",
+    "custom/sncf",
+    "network",
+    // "memory",
+    // "cpu",
+    "backlight",
+    "pulseaudio",
+    "battery"
+    // "custom/exit"
+  ],
+  "custom/launcher": {
+    "format": "<span color='#F38BA8'></span>",
+    "on-click": "rofi -show drun"
+    // "on-click": "rofi -show drun"
+  },
+  "wlr/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-click": "activate",
+    "format": "{icon}",
+    //"on-scroll-up": "hyprctl dispatch workspace e+1",
+    //"on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent_workspaces": {
+      "01": [],
+      "02": [],
+      "03": [],
+      "04": [],
+      "05": [],
+      "06": [],
+      "07": [],
+      "08": [],
+      "09": [],
+      "10": [],
+      "11": [],
+      "12": [],
+      "13": [],
+      "14": [],
+      "15": []
+    }
+    // "format-icons": {
+    //   "1": "",
+    //   "2": "",
+    //   "3": "ﭮ",
+    //   "4": "",
+    //   "5": "",
+    //   "6": "",
+    //   "7": "7.",
+    //   "8": "8.",
+    //   "9": "9.",
+    //   "10": "10.",
+    //   // "default": "",
+    //   // "active": ""
+    // }
+  },
+  "inhibitor": {
+    "on-click": "",
+    "what": "idle",
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "custom/caffeine": {
+    "on-click": "",
+    "exec": "~/.config/waybar/scripts/caffeine.sh",
+    "return-type": "json",
+    "interval": 3,
+    "format-icons": [
+      "﯈",
+      ""
+    ],
+    "format": "{icon}"
+  },
+  "custom/sncf": {
+    "on-click": "xdg-open 'https://wifi.sncf'",
+    "exec": "sncf-speed && wifi-sncf-status",
+    "interval": 30
+  },
+  "custom/updates": {
+    "exec": "(checkupdates ; yay -Qua) | wc -l",
+    "interval": 12000,
+    "format": " {}",
+    "on-click": "alacritty --config-file=.config/alacritty/alacritty-scaled-up.yml --command /bin/zsh -c 'yay -Syu'"
+  },
+  "tray": {
+    "on-click": "",
+    "icon-size": 17,
+    "spacing": 10
+  },
+  "backlight": {
+    "on-click": "",
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 6
+  },
+  "battery": {
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "CHARGE-IMMEDIATELY-NOW ",
+      "Charge-immediately ",
+      "Charge-quickly ",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "clock": {
+    "on-click": "",
+    "format": "{: %R   %d/%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "network": {
+    "format-wifi": "直 {essid}",
+    "format-ethernet": " {essid}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "睊 Disc.",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+    // "on-click": "wofi-wifi-menu",
+    "on-click": "alacritty --config-file=.config/alacritty/alacritty-scaled-up.yml -e nmtui"
+  },
+  "cpu": {
+    "on-click": "",
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "memory": {
+    "on-click": "",
+    "interval": 30,
+    "format": " {used:0.1f}G/{total:0.1f}G",
+    "max-length": 15
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "ﱝ Muted",
+    "on-click": "~/.config/hypr/scripts/volume_ctl.sh",
+    "scroll-step": 1,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        "墳",
+        ""
+      ]
+    }
+  },
+  "custom/music-player": {
+    "exec": "$HOME/.config/waybar/scripts/music-player.sh",
+    "on-click": "playerctl play-pause",
+    "on-double-click": "playerctl next",
+    "on-right-click": "on-click-right",
+    "return-type": "text",
+    "interval": 3
+  },
+  "custom/dunst": {
+    "exec": "$HOME/.config/waybar/scripts/dunst.sh",
+    "on-click": "dunstctl set-paused toggle",
+    "return-type": "text",
+    "interval": 3
+  }
+  // "custom/exit": {
+  //   "format": "<span color='#F38BA8'>⏻</span>",
+  //   "on-click": "sh ~/.config/rofi/leave/leave.sh"
+  // }
+}

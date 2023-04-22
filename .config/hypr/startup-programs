@@ -1,0 +1,27 @@
+#!/bin/sh
+
+source "$HOME/.config/dotfiles/load.sh"
+
+
+hyprpaper & # Wallpaper
+#alacritty --config-file=.config/alacritty/alacritty-scaled-up.yml & # Initial terminal
+redshift -l 43.1749:5.2251 & # 'Red screen'
+waybar & # Bar
+dunst & # Notifications
+/usr/lib/kdeconnectd & # kdeconnect daemon
+kdeconnect-indicator &
+nextcloud & # Nextcloud auto sync
+/usr/lib/polkit-kde-authentication-agent-1 & # Polkit agent
+swayosd & # Gnome like volume changer
+
+# Playerctl firefox
+cd $HOME/Downloads/git-repos/playerctl-firefox-youtube
+node server &
+cd
+
+if [[ "$CHANGE_WALL" -eq 1 ]]; then
+    sleep 0.3
+    wallpaper-changer --sleep "$WALL_UPDATE_FREQ" --path "$WALLPAPERS_PATH" &
+fi;
+
+"$HOME/.config/dotfiles/autostart.sh" &
